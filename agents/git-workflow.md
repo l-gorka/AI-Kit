@@ -11,7 +11,9 @@ For assigned implementation work, create a short-lived branch named
 ## Commits
 
 Create a local Conventional Commit only after the work is verified, or when
-explicitly requested. Commit subject capitalization is unrestricted.
+explicitly requested. Use the unscoped `<type>: <description>` form, such as
+`feat: add Board persistence`; parenthesized scopes are not used. Commit
+subject capitalization is unrestricted.
 
 - Make one commit per logical change, in order. Each verified stage gets its
   own commit; later work goes into a new commit.
