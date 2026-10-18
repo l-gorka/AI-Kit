@@ -16,6 +16,7 @@ agents/                 Generic operating procedures (referenced by AGENTS.md)
   domain.md
   knowledge.md
   unit-testing.md
+  vertical-slices.md
 templates/              Skeletons for project-owned files
   CONTEXT.md
   GLOSSARY.md

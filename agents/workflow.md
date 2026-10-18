@@ -26,7 +26,8 @@ Use this mode when working on an assigned issue.
 6. Keep the diff scoped. Surface adjacent improvements, bugs, spec/implementation
    mismatches, TODOs, and tech debt as follow-up issues (see "Filing follow-up
    issues" below) rather than expanding the current diff. Follow the
-   project-specific conventions listed in `CONTEXT.md`.
+   project-specific conventions listed in `CONTEXT.md` and the code layout in
+   `vertical-slices.md`.
 7. Verify the change using the risk-based test strategy below.
 8. Review the resulting diff for scope, acceptance criteria, error handling,
    and documentation impact.
