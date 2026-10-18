@@ -82,6 +82,8 @@ new product rule.
 
 ## Testing strategy
 
+See `unit-testing.md` for where test files live.
+
 Choose tests by risk:
 
 - Use focused unit or component tests for local logic and UI state.

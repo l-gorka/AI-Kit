@@ -15,6 +15,7 @@ agents/                 Generic operating procedures (referenced by AGENTS.md)
   triage-labels.md
   domain.md
   knowledge.md
+  unit-testing.md
 templates/              Skeletons for project-owned files
   CONTEXT.md
   GLOSSARY.md
