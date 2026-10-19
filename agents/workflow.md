@@ -37,7 +37,14 @@ Use this mode when working on an assigned issue.
     acceptance criteria, scope, and supplied verification evidence; they do not
     rerun lint, build, or test commands. The implementation agent owns
     verification.
-11. Address review findings and repeat verification/review as needed.
+11. Scope every review to the repository's own source. Do not read installed,
+    vendored, or generated third-party code (`node_modules`, dependency
+    lockfiles, bundled output) or other tools that are not part of this project.
+    Reason about dependency behavior from the project's own source and the
+    assumptions already recorded in the issue, specification, or context; if a
+    dependency's behavior is load-bearing and unverified, report that as a
+    finding instead of reading the dependency's internals.
+12. Address review findings and repeat verification/review as needed.
 
 Implementation mode may read the assigned issue but does not create, edit,
 label, comment on, or close issues or PR metadata — except for filing
