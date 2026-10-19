@@ -40,7 +40,7 @@ drawing-board/                    ← host repo (harness target)
 
 - [Bun](https://bun.sh)
 - `gh` authenticated for the **host** repository
-- `CURSOR_API_KEY` ([Cursor Integrations](https://cursor.com/dashboard/integrations))
+- `CURSOR_API_KEY` in the host repo `.env.local` or shell ([Cursor Integrations](https://cursor.com/dashboard/integrations)). The CLI loads `.env.local` / `.env` from the **host root**, even when you run the script from inside `.ai-kit/packages/issue-harness/`.
 
 ## Host repo setup
 

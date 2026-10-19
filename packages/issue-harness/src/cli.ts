@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 import { resolve } from "node:path";
+import { loadProjectEnv } from "./loadProjectEnv";
 import { runIssue } from "./runIssue";
 import { resolveProjectRoot } from "./projectRoot";
 
@@ -61,6 +62,7 @@ async function main(): Promise<void> {
 
   const startDir = cwdFlag ? resolve(cwdFlag) : process.cwd();
   const projectRoot = await resolveProjectRoot(startDir);
+  await loadProjectEnv(projectRoot);
 
   try {
     await runIssue(projectRoot, issueNumber);
