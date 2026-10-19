@@ -17,10 +17,14 @@ agents/                 Generic operating procedures (referenced by AGENTS.md)
   knowledge.md
   unit-testing.md
   vertical-slices.md
+  issue-harness.md      How the optional issue harness relates to this kit
+packages/
+  issue-harness/        POC: GitHub issue → local SDK agents + harness-owned git/tests
 templates/              Skeletons for project-owned files
   CONTEXT.md
   GLOSSARY.md
   adr-template.md
+  harness.json            Per-project test commands and model defaults
 AGENTS.template.md      Entry point to copy into a project as AGENTS.md
 ```
 
