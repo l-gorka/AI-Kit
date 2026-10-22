@@ -15,11 +15,13 @@ agents/                 Generic operating procedures (referenced by AGENTS.md)
   triage-labels.md
   domain.md
   knowledge.md
+  rules.md
   unit-testing.md
   vertical-slices.md
 templates/              Skeletons for project-owned files
   CONTEXT.md
   GLOSSARY.md
+  RULES.md
   adr-template.md
 AGENTS.template.md      Entry point to copy into a project as AGENTS.md
 ```
@@ -30,6 +32,7 @@ These are never part of the kit:
 
 - `GLOSSARY.md`, `docs/adr/`, `docs/specs/`, `docs/design/`
 - `CONTEXT.md` (repo map, verification commands, project conventions)
+- `RULES.md` (decisions the project owner has stated)
 - `docs/knowledge/` (verified notes for that repo's problems)
 - CI configuration
 
@@ -43,9 +46,9 @@ These are never part of the kit:
 
 2. Copy `.ai-kit/AGENTS.template.md` to `AGENTS.md` and replace `<KIT>` with
    `.ai-kit`.
-3. Copy `.ai-kit/templates/CONTEXT.md` and `GLOSSARY.md` to the project root and
-   fill them in (at minimum the "Verification commands" section of
-   `CONTEXT.md`).
+3. Copy `.ai-kit/templates/CONTEXT.md`, `GLOSSARY.md`, and `RULES.md` to the
+   project root and fill them in (at minimum the "Verification commands"
+   section of `CONTEXT.md`; replace `<KIT>` in `RULES.md`).
 
 ## Overriding
 

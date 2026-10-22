@@ -9,6 +9,7 @@ path where the kit is mounted (e.g. `.ai-kit`). Delete this comment.
 
 Read `CONTEXT.md` for the repository map. For implementation work, follow
 `<KIT>/agents/workflow.md`. Read `GLOSSARY.md` before naming domain concepts.
+Read `RULES.md` and follow every rule in it.
 For every branch, commit, history rewrite, push, or merge, follow
 `<KIT>/agents/git-workflow.md`.
 
@@ -32,3 +33,8 @@ The shared vocabulary is in root `GLOSSARY.md`. Architectural decisions are in
 Before solving a recurring or environment-specific problem, check
 `docs/knowledge/`. Add a note there only after verifying a reusable
 solution; never store secrets. See `<KIT>/agents/knowledge.md`.
+
+### Owner rules
+
+Decisions the project owner has stated live in root `RULES.md`. Propose new
+rules; write them only after approval. See `<KIT>/agents/rules.md`.

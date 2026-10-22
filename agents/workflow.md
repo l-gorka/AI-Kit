@@ -11,9 +11,10 @@ project's `CONTEXT.md`, not here.
 
 Use this mode when working on an assigned issue.
 
-1. Read `CONTEXT.md`, `GLOSSARY.md`, relevant specifications and ADRs, the
-   assigned issue, and relevant knowledge notes. Read any design or
-   convention documents that `CONTEXT.md` points to for the area you touch.
+1. Read `CONTEXT.md`, `GLOSSARY.md`, the rules file (see `rules.md`), relevant
+   specifications and ADRs, the assigned issue, and relevant knowledge notes.
+   Read any design or convention documents that `CONTEXT.md` points to for the
+   area you touch.
 2. Confirm that the issue states an outcome, acceptance criteria, boundaries,
    and test expectations. Ask focused questions before coding when a material
    decision is missing.
@@ -35,7 +36,8 @@ Use this mode when working on an assigned issue.
 10. Hand substantive code/configuration changes to a separate review agent after
     the implementation diff is verified. Review agents inspect the diff,
     acceptance criteria, scope, and supplied verification evidence; they do not
-    rerun lint, build, or test commands. The implementation agent owns
+    rerun lint, build, or test commands. They also check the diff against the
+    rules file and report unexplained deviations. The implementation agent owns
     verification.
 11. Scope every review to the repository's own source. Do not read installed,
     vendored, or generated third-party code (`node_modules`, dependency
@@ -109,9 +111,21 @@ stop at that boundary.
 
 ## Documentation and memory
 
+### Ask before editing agent documents
+
+Agent documents are `AGENTS.md`, `CONTEXT.md`, `GLOSSARY.md`, the rules file,
+`docs/adr/`, `docs/knowledge/`, and this kit. Before changing any of them,
+show the owner the exact proposed text and the reason, then wait for
+approval. Batch proposals from one task into one message. This applies even
+when another step of this workflow says to update the document.
+
+### What to update
+
 Update durable documentation in the same change when a term, architecture
 decision, or workflow rule is resolved:
 
+- Add owner decisions about how work is done to the rules file (see
+  `rules.md`).
 - Add shared product terms to `GLOSSARY.md`.
 - Add durable architectural trade-offs to `docs/adr/`.
 - Add stable navigation information to `CONTEXT.md`.
