@@ -10,10 +10,17 @@ Put test files in **`__tests__` directories**, separate from production source.
 - **Do:** `src/__tests__/board.test.ts` for `src/board.ts`
 - **Do not:** `src/board.test.ts` beside `src/board.ts`
 
-Use one `__tests__` folder per package or workspace root (for example
-`shared/src/__tests__/`, `web/src/__tests__/`). For a deep tree, you may add
-nested `__tests__` next to the code they cover; follow the layout already used
-in that package.
+Co-locate tests with the feature they cover: each feature slice (see
+`vertical-slices.md`) has its own `__tests__` folder at the slice root.
+
+- **Do:** `src/features/board/__tests__/board.test.ts` for code in
+  `src/features/board/`
+- **Do not:** collect feature tests in a shared root folder such as
+  `src/__tests__/`
+
+Tests for code outside any slice (app entry, shell wiring, cross-slice
+configuration) go in the `__tests__` folder of the directory that owns that
+code, for example `src/__tests__/` for `src/main.ts`.
 
 ## Imports
 
