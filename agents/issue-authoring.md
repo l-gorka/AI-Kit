@@ -27,6 +27,11 @@ Every issue has three sections, in this order:
 2. **Acceptance criteria** — a checklist, each item verifiable on its own.
 3. **Blocked by** — references to the blocking tickets, or
    `None (can start immediately)`.
+4. **Defined by** — links to every product specification, technical
+   architecture document, or ADR that owns the ticket's behavior or durable
+   constraints. Link to those documents instead of copying their rules into the
+   issue. Use stable GitHub document URLs for tracker issues; the referenced
+   documents must be committed before their links can resolve.
 
 For follow-up issues filed mid-implementation, add a short **Context** line at
 the top: which task/PR surfaced it and why it's out of scope for that task.
