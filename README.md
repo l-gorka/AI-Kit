@@ -59,7 +59,7 @@ These are never part of the kit:
      "hooks": {
        "PreToolUse": [
          {
-           "matcher": "Bash",
+           "matcher": "Bash|mcp__github__(create_branch|push_files|create_or_update_file|create_pull_request)",
            "hooks": [
              {
                "type": "command",

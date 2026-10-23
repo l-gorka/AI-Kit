@@ -46,9 +46,9 @@ Use this mode when working on an assigned issue.
 
 Implementation mode may read the assigned issue but does not create, edit,
 label, comment on, or close issues or PR metadata — except for filing
-follow-up issues as described in "Filing follow-up issues" below, and the
-task's own issue when it has none (see `git-workflow.md`). Git remote
-changes remain governed by `git-workflow.md`.
+follow-up issues as described in "Filing follow-up issues" below, the
+task's own issue when it has none, and the task's pull request (both per
+`git-workflow.md`).
 
 ### Issue-management mode
 
@@ -166,5 +166,5 @@ project's knowledge directory. When and how to add a note: `knowledge.md`.
 
 Work is complete when the acceptance criteria are met, the relevant tests and
 lint/build checks pass, the diff is scoped, durable documentation is updated,
-and the separate review-agent pass is complete or its findings are explicitly
-accepted by a human.
+the separate review-agent pass is complete or its findings are explicitly
+accepted by a human, and the pull request is open (see `git-workflow.md`).

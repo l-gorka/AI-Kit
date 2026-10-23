@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Claude Code PreToolUse hook for Bash: rejects git commands that create or
-push a branch whose name breaks agents/git-workflow.md.
+"""Claude Code PreToolUse hook: rejects git commands (Bash) and GitHub tool
+calls that create or push to a branch whose name breaks
+agents/git-workflow.md.
 
 Reads the hook event JSON on stdin. Exit 2 blocks the command and shows the
 message to the agent; exit 0 lets it run.
@@ -97,9 +98,14 @@ def branches_in(git_args, cwd):
 
 def main():
     event = json.load(sys.stdin)
-    command = event.get("tool_input", {}).get("command", "")
+    tool_input = event.get("tool_input", {})
+    command = tool_input.get("command", "")
     cwd = event.get("cwd", ".")
     bad = []
+    if event.get("tool_name", "").startswith("mcp__github__"):
+        branch = tool_input.get("branch") or tool_input.get("head")
+        if branch and branch not in EXEMPT and not PATTERN.match(branch):
+            bad.append(branch)
     for words in split_commands(command):
         if words[:1] == ["cd"] and len(words) > 1:
             cwd = words[1]
