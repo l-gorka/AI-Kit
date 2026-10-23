@@ -46,7 +46,8 @@ Use this mode when working on an assigned issue.
 
 Implementation mode may read the assigned issue but does not create, edit,
 label, comment on, or close issues or PR metadata — except for filing
-follow-up issues as described in "Filing follow-up issues" below. Git remote
+follow-up issues as described in "Filing follow-up issues" below, and the
+task's own issue when it has none (see `git-workflow.md`). Git remote
 changes remain governed by `git-workflow.md`.
 
 ### Issue-management mode
