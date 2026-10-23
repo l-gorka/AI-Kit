@@ -34,5 +34,6 @@ Create a folder only when the slice has a file for it.
 
 ## Overrides
 
-Repository-specific layout belongs in `CONTEXT.md` under "Project
-conventions". When `CONTEXT.md` conflicts with this file, `CONTEXT.md` wins.
+Repository-specific layout belongs in the project's rules file (see
+`rules.md`). When the rules file conflicts with this file, the rules file
+wins.

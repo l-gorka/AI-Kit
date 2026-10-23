@@ -2,8 +2,9 @@
 
 This document defines the default operating procedure for implementation work.
 It applies to every workspace in the repository unless the issue narrows the
-scope. Project-specific facts (stack, commands, conventions) live in the
-project's `CONTEXT.md`, not here.
+scope. Project-specific facts (repository map, stack, commands) live in the
+project's `CONTEXT.md`, and the project's conventions live in its rules file
+(see `rules.md`), not here.
 
 ## Modes
 
@@ -27,8 +28,7 @@ Use this mode when working on an assigned issue.
 6. Keep the diff scoped. Surface adjacent improvements, bugs, spec/implementation
    mismatches, TODOs, and tech debt as follow-up issues (see "Filing follow-up
    issues" below) rather than expanding the current diff. Follow the
-   project-specific conventions listed in `CONTEXT.md` and the code layout in
-   `vertical-slices.md`.
+   rules file and the code layout in `vertical-slices.md`.
 7. Verify the change using the risk-based test strategy below.
 8. Review the resulting diff for scope, acceptance criteria, error handling,
    and documentation impact.
@@ -131,6 +131,14 @@ decision, or workflow rule is resolved:
 - Add stable navigation information to `CONTEXT.md`.
 - Add operating rules to this file (or to the project's `AGENTS.md` when they
   are project-specific).
+
+### One home per statement
+
+Each statement lives in exactly one document; elsewhere, link to it instead of
+restating it. `CONTEXT.md` holds facts only: what exists, where it is, and how
+to run it. Anything an agent should or must do — a convention, a layout, a
+boundary — is a decision and belongs in the rules file, never in
+`CONTEXT.md`.
 
 Before solving a recurring or environment-specific problem, read relevant
 notes in the project's knowledge directory (see `knowledge.md`). Add a knowledge

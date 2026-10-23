@@ -1,5 +1,11 @@
 # Repository context
 
+<!--
+Facts only: what exists, where it is, and how to run it. Conventions and other
+"do this" statements belong in RULES.md; link to them instead of restating
+them here.
+-->
+
 <One or two sentences: what this product is.>
 
 The repository contains:
@@ -28,10 +34,3 @@ handoff.
 <workspace>: <lint command>
 <workspace>: <build command>
 ```
-
-## Project conventions
-
-Rules the agent workflow applies in step 6 of implementation mode, for example
-shared-component usage, test file locations, or module boundaries.
-
-- <convention>

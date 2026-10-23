@@ -31,8 +31,9 @@ AGENTS.template.md      Entry point to copy into a project as AGENTS.md
 These are never part of the kit:
 
 - `GLOSSARY.md`, `docs/adr/`, `docs/specs/`, `docs/design/`
-- `CONTEXT.md` (repo map, verification commands, project conventions)
-- `RULES.md` (decisions the project owner has stated)
+- `CONTEXT.md` (facts: repo map, verification commands, environment notes)
+- `RULES.md` (decisions the project owner has stated, including all project
+  conventions)
 - `docs/knowledge/` (verified notes for that repo's problems)
 - CI configuration
 
