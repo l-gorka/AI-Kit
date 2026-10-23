@@ -19,7 +19,9 @@ Use this mode when working on an assigned issue.
 2. Confirm that the issue states an outcome, acceptance criteria, boundaries,
    and test expectations. Ask focused questions before coding when a material
    decision is missing.
-3. Create the implementation branch per `git-workflow.md`.
+3. Create a new branch for the task per `git-workflow.md`, even when the
+   session already put you on a branch: fetch the remote default branch,
+   branch from it, and name the branch by the kit's convention.
 4. Implement the smallest coherent change that satisfies the issue.
 5. Keep the diff scoped. Surface adjacent improvements, bugs, spec/implementation
    mismatches, TODOs, and tech debt as follow-up issues (see "Filing follow-up
