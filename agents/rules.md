@@ -4,6 +4,10 @@ Convention for the project's rules file (default: `RULES.md` at the repo
 root): decisions and preferences the project owner has stated. The rules are
 project-specific and live in the project, not in this kit.
 
+The rules file is the only home for the project's conventions: code layout,
+module boundaries, naming, test placement, and other "do this" statements.
+`CONTEXT.md` describes what exists and links here; it never restates a rule.
+
 ## Format
 
 One `##` heading per rule, then one imperative sentence and a one-line
