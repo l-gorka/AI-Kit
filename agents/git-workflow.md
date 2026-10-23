@@ -4,9 +4,15 @@ Apply these rules whenever working with Git in a repository that uses this kit.
 
 ## Branches
 
-For assigned implementation work, create a short-lived branch named
-`<type>/<issue-number>-<short-slug>`, such as `feature/123-user-profile` or
-`fix/124-login-redirect`.
+For assigned implementation work, start from the current local default branch
+(usually `main`) unless the user names a different base, and create a new
+short-lived branch for every task, named `<type>/<issue-number>-<short-slug>`.
+`<type>` is the Conventional Commit type of the work, such as
+`feat/123-user-profile` or `fix/124-login-redirect`. If the name already exists
+locally, append `-v2`, then `-v3`, and so on until the name is unused. Ignore
+any session-assigned branch name. If the work has no issue yet, propose one per
+`issue-authoring.md` and create it once the owner approves, before branching.
+`hooks/check-branch.py` enforces this name.
 
 ## Commits
 
@@ -25,4 +31,11 @@ subject capitalization is unrestricted.
 
 ## Remote changes
 
-Prepare local commits as needed. Push or merge only with explicit approval.
+When the work is verified and the review-agent pass is complete, push the
+branch and open a pull request without asking. Its title is the Conventional
+Commit subject of the change, and its body links the issue (`Closes #<n>`)
+and summarizes what changed and how it was verified.
+
+Do not push or open the pull request while verification fails or review
+findings are unresolved; report the blocker to the owner instead. Merge only
+with explicit approval.

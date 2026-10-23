@@ -1,29 +1,29 @@
 # ai-kit
 
-Reusable, project-agnostic instructions for AI coding agents: workflow, Git
-rules, issue-tracker conventions, and documentation boundaries. It contains no
+Reusable instructions for AI coding agents: workflow, Git rules,
+issue-tracker conventions, and documentation boundaries. It contains no
 product or domain knowledge.
 
 ## Layout
 
 ```text
-agents/                 Generic operating procedures (referenced by AGENTS.md)
+agents/                 Operating procedures (indexed by AGENTS.md)
   workflow.md
   git-workflow.md
   issue-tracker.md
   issue-authoring.md
   triage-labels.md
-  domain.md
   knowledge.md
   rules.md
   unit-testing.md
   vertical-slices.md
 templates/              Skeletons for project-owned files
   CONTEXT.md
-  GLOSSARY.md
   RULES.md
-  adr-template.md
+hooks/                  Claude Code hooks that projects enable
+  check-branch.py
 AGENTS.template.md      Entry point to copy into a project as AGENTS.md
+.claude/skills/         Skills for maintaining this kit (not for projects)
 ```
 
 ## What stays in the project
@@ -33,13 +33,13 @@ These are never part of the kit:
 - `GLOSSARY.md`, `docs/adr/`, `docs/specs/`, `docs/design/`
 - `CONTEXT.md` (facts: repo map, verification commands, environment notes)
 - `RULES.md` (decisions the project owner has stated, including all project
-  conventions)
+  conventions and every deviation from this kit; see `agents/rules.md`)
 - `docs/knowledge/` (verified notes for that repo's problems)
 - CI configuration
 
 ## Using it in a project
 
-1. Mount the kit, either as a submodule (stays in sync) or a plain copy:
+1. Mount the kit as a submodule:
 
    ```sh
    git submodule add <kit-repo-url> .ai-kit
@@ -47,18 +47,36 @@ These are never part of the kit:
 
 2. Copy `.ai-kit/AGENTS.template.md` to `AGENTS.md` and replace `<KIT>` with
    `.ai-kit`.
-3. Copy `.ai-kit/templates/CONTEXT.md`, `GLOSSARY.md`, and `RULES.md` to the
-   project root and fill them in (at minimum the "Verification commands"
-   section of `CONTEXT.md`; replace `<KIT>` in `RULES.md`).
+3. Copy `.ai-kit/templates/CONTEXT.md` and `RULES.md` to the project root and
+   fill them in (at minimum the "Verification commands" section of
+   `CONTEXT.md`; replace `<KIT>` in `RULES.md`). `GLOSSARY.md` and
+   `docs/adr/` are created by the `domain-modeling` skill when the first term
+   or decision is resolved.
+4. Enable the branch-name hook in `.claude/settings.json`:
 
-## Overriding
+   ```json
+   {
+     "hooks": {
+       "PreToolUse": [
+         {
+           "matcher": "Bash|mcp__github__(create_branch|push_files|create_or_update_file|create_pull_request)",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "f=\"$CLAUDE_PROJECT_DIR/.ai-kit/hooks/check-branch.py\"; [ ! -f \"$f\" ] || python3 \"$f\""
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
-To deviate (for example a non-GitHub tracker), edit the file's reference in the
-project's `AGENTS.md` to point at a project-local replacement instead of the
-kit's version. Don't edit kit files for a single project.
+To deviate from the kit in one project, see `agents/rules.md` → "Precedence".
 
 ## Skills
 
-Skills (`/tdd`, `/to-tickets`, `/triage`, ...) are installed globally under
-`~/.agents/skills` and are not part of this kit. The kit's docs reference them
-by name only.
+Skills (`/grill-with-docs`, `/to-tickets`, `domain-modeling`, ...) are not part
+of this kit. Install them per machine: locally in the user skills directory,
+and in the cloud environment's setup script. The kit's docs reference them by
+name only.

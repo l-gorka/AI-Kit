@@ -19,11 +19,6 @@ The repository contains:
 - `docs/adr/` — durable architectural trade-offs and their rationale.
 - `docs/knowledge/` — verified, reusable solutions to recurring problems.
 
-When sources conflict, use the glossary for terminology, the specifications
-for desired behavior, ADRs for architectural rationale, and the current issue
-for task scope. Record unresolved specification/implementation mismatches as
-explicit follow-up work.
-
 ## Verification commands
 
 The agent workflow reads this section for the baseline checks to run before

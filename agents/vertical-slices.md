@@ -31,9 +31,3 @@ Create a folder only when the slice has a file for it.
   (see `CONTEXT.md`).
 - The shell (`main.tsx`, `App.tsx`) holds wiring only: providers and slice
   composition.
-
-## Overrides
-
-Repository-specific layout belongs in the project's rules file (see
-`rules.md`). When the rules file conflicts with this file, the rules file
-wins.

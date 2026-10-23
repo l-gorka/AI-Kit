@@ -32,9 +32,3 @@ path into source (for example `../board`, `../App`).
 Vitest and Jest pick up `*.test.*` and `*.spec.*` under `__tests__` by default.
 If the project uses another runner, record where its tests go in the rules
 file.
-
-## Overrides
-
-Repository-specific rules (different folder name, e2e-only paths, shared test
-helpers) belong in the project's **rules file** (see `rules.md`). When the
-rules file conflicts with this file, **the rules file wins** for that repo.

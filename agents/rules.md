@@ -8,6 +8,16 @@ The rules file is the only home for the project's conventions: code layout,
 module boundaries, naming, test placement, and other "do this" statements.
 `CONTEXT.md` describes what exists and links here; it never restates a rule.
 
+## Precedence
+
+The rules file takes precedence over every document in this kit. To deviate
+from the kit in one project (a different tracker, label vocabulary, code
+layout, or test placement), add a rule to that project's rules file; never
+edit kit files for one project.
+
+When two statements still conflict — two kit documents, or two rules — ask
+the owner which one holds before acting on either.
+
 ## Format
 
 One `##` heading per rule, then one imperative sentence and a one-line
