@@ -1,6 +1,6 @@
 # ai-kit
 
-Reusable instructions and skills for AI coding agents: workflow, Git rules,
+Reusable instructions for AI coding agents: workflow, Git rules,
 issue-tracker conventions, and documentation boundaries. It contains no
 product or domain knowledge.
 
@@ -17,12 +17,6 @@ agents/                 Operating procedures (indexed by AGENTS.md)
   rules.md
   unit-testing.md
   vertical-slices.md
-skills/                 Agent skills that projects link to
-  ask-matt/
-  domain-modeling/
-  grill-with-docs/
-  grilling/
-  to-tickets/
 templates/              Skeletons for project-owned files
   CONTEXT.md
   RULES.md
@@ -56,22 +50,12 @@ These are never part of the kit:
    `CONTEXT.md`; replace `<KIT>` in `RULES.md`). `GLOSSARY.md` and
    `docs/adr/` are created by the `domain-modeling` skill when the first term
    or decision is resolved.
-4. Link each skill the project uses, so Claude Code loads it from the kit:
-
-   ```sh
-   mkdir -p .claude/skills
-   ln -s ../../.ai-kit/skills/<name> .claude/skills/<name>
-   ```
-
-   Cloud sessions clone without submodules, so add a `SessionStart` hook that
-   runs `git submodule update --init` and then prints
-   `{"hookSpecificOutput":{"hookEventName":"SessionStart","reloadSkills":true}}`
-   so the linked skills load.
 
 To deviate from the kit in one project, see `agents/rules.md` → "Precedence".
 
 ## Skills
 
-`skills/` holds unmodified copies of skills from
-[mattpocock/skills](https://github.com/mattpocock/skills) (commit `5beb35b`).
-Update them by copying a newer upstream version, not by editing them here.
+Skills (`/grill-with-docs`, `/to-tickets`, `domain-modeling`, ...) are not part
+of this kit. Install them per machine: locally in the user skills directory,
+and in the cloud environment's setup script. The kit's docs reference them by
+name only.

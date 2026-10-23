@@ -31,8 +31,8 @@ Quote `file:line` for every finding.
   format and precedence (`agents/rules.md`), `AGENTS.template.md` as an index
   only.
 - **Unused or broken**: a kit document no project's `AGENTS.md` reaches; a
-  skill in `skills/` no project links; a skill, file, label, or link that is
-  referenced but does not exist; the README layout out of sync with the files.
+  file, label, or link that is referenced but does not exist; the README
+  layout out of sync with the files.
 - **Misplaced**: project-specific content in the kit, or a generic rule a
   project copied into its `RULES.md` that belongs in the kit.
 - **Bloat**: wording that can be cut without losing a rule; sections no agent
@@ -40,9 +40,6 @@ Quote `file:line` for every finding.
 - **Ambiguity**: an instruction an agent could reasonably follow two ways.
 - **Drift**: a project pinned behind `main`, or a project `AGENTS.md` that no
   longer matches `AGENTS.template.md`.
-
-Skills in `skills/` are unmodified upstream copies: check only whether they
-are linked and whether the skills they call exist, not their wording.
 
 Verify each finding against the text before reporting it; drop what you
 cannot quote.
