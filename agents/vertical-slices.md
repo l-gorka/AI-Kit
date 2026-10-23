@@ -1,6 +1,6 @@
 # Vertical slices
 
-Default way to organize a React application (for example a `web/` client): group
+Default way to organize application code (for example a `web/` client): group
 by **feature slice**, then by kind of file inside the slice. A slice owns
 everything one feature needs, from UI to data access.
 
