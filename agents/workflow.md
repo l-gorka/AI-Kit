@@ -59,6 +59,14 @@ Use this mode only when the task explicitly asks for issue or PR management.
 This mode may create, edit, label, comment on, or close tracker items using
 the repository's issue-tracker conventions (`issue-tracker.md`).
 
+## Editing files
+
+Prefer the agent's file-edit tools, which show every change as a diff. A
+script or shell command (Python, `sed`, `awk`, heredocs, redirects, or
+similar) may change files when it is the better tool, but say so before
+running it: in plain words, which files it changes, what it changes, and why
+a script instead of the edit tools.
+
 ## Filing follow-up issues
 
 Implementation mode may file follow-up issues for work it discovers but does
