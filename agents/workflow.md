@@ -19,34 +19,30 @@ Use this mode when working on an assigned issue.
 2. Confirm that the issue states an outcome, acceptance criteria, boundaries,
    and test expectations. Ask focused questions before coding when a material
    decision is missing.
-3. Start from the current local default branch (usually `main`) unless the
-   user specifies a different base. Create a new implementation branch for
-   every task. If the preferred branch name already exists locally, append
-   `-v2`, then `-v3`, and so on until the name is unused.
-4. Follow `git-workflow.md` when creating the implementation branch.
-5. Implement the smallest coherent change that satisfies the issue.
-6. Keep the diff scoped. Surface adjacent improvements, bugs, spec/implementation
+3. Create the implementation branch per `git-workflow.md`.
+4. Implement the smallest coherent change that satisfies the issue.
+5. Keep the diff scoped. Surface adjacent improvements, bugs, spec/implementation
    mismatches, TODOs, and tech debt as follow-up issues (see "Filing follow-up
    issues" below) rather than expanding the current diff. Follow the
    rules file and the code layout in `vertical-slices.md`.
-7. Verify the change using the risk-based test strategy below.
-8. Review the resulting diff for scope, acceptance criteria, error handling,
+6. Verify the change using the risk-based test strategy below.
+7. Review the resulting diff for scope, acceptance criteria, error handling,
    and documentation impact.
-9. Follow `git-workflow.md` when preparing the local commit.
-10. Hand substantive code/configuration changes to a separate review agent after
-    the implementation diff is verified. Review agents inspect the diff,
-    acceptance criteria, scope, and supplied verification evidence; they do not
-    rerun lint, build, or test commands. They also check the diff against the
-    rules file and report unexplained deviations. The implementation agent owns
-    verification.
-11. Scope every review to the repository's own source. Do not read installed,
+8. Follow `git-workflow.md` when preparing the local commit.
+9. Hand substantive code/configuration changes to a separate review agent after
+   the implementation diff is verified. Review agents inspect the diff,
+   acceptance criteria, scope, and supplied verification evidence; they do not
+   rerun lint, build, or test commands. They also check the diff against the
+   rules file and report unexplained deviations. The implementation agent owns
+   verification.
+10. Scope every review to the repository's own source. Do not read installed,
     vendored, or generated third-party code (`node_modules`, dependency
     lockfiles, bundled output) or other tools that are not part of this project.
     Reason about dependency behavior from the project's own source and the
     assumptions already recorded in the issue, specification, or context; if a
     dependency's behavior is load-bearing and unverified, report that as a
     finding instead of reading the dependency's internals.
-12. Address review findings and repeat verification/review as needed.
+11. Address review findings and repeat verification/review as needed.
 
 Implementation mode may read the assigned issue but does not create, edit,
 label, comment on, or close issues or PR metadata — except for filing
@@ -84,8 +80,8 @@ the trigger that surfaced it) and wait for the user to approve, edit, or drop it
 before creating it. Batch multiple proposals into one message when several come
 up in a single task.
 
-Write every filed issue per `issue-authoring.md` and apply the `ready-for-agent`
-label. Drive the tracker per `issue-tracker.md`.
+Write every filed issue per `issue-authoring.md`. Drive the tracker per
+`issue-tracker.md`.
 
 ## Scope and specifications
 
@@ -94,9 +90,22 @@ mismatch between a specification and the existing system, record it as explicit
 follow-up work unless the current issue already authorizes the change. Do not
 silently change a contract while implementing an unrelated task.
 
+When sources disagree, use the glossary for terminology, the specifications
+for desired behavior, ADRs for architectural rationale, and the current issue
+for task scope. For conflicts between the rules file and this kit, see
+`rules.md`.
+
 When a requirement is materially ambiguous, ask a focused question and pause
 that part of the implementation. Do not turn an unconfirmed assumption into a
 new product rule.
+
+### Domain vocabulary and ADRs
+
+When your output names a domain concept (an issue title, a proposal, a test
+name), use the term as `GLOSSARY.md` defines it, not a synonym it avoids. If
+your output contradicts an existing ADR, say so explicitly instead of silently
+overriding it. Changing the glossary or ADRs is the `domain-modeling` skill's
+job.
 
 ## Testing strategy
 
@@ -132,13 +141,12 @@ when another step of this workflow says to update the document.
 Update durable documentation in the same change when a term, architecture
 decision, or workflow rule is resolved:
 
-- Add owner decisions about how work is done to the rules file (see
-  `rules.md`).
+- Add project conventions and owner decisions to the rules file (see
+  `rules.md`). `AGENTS.md` is only the entry point; it holds no rules.
 - Add shared product terms to `GLOSSARY.md`.
 - Add durable architectural trade-offs to `docs/adr/`.
 - Add stable navigation information to `CONTEXT.md`.
-- Add operating rules to this file (or to the project's `AGENTS.md` when they
-  are project-specific).
+- Propose rules that apply to every project as a change to this kit.
 
 ### One home per statement
 
@@ -148,12 +156,10 @@ to run it. Anything an agent should or must do — a convention, a layout, a
 boundary — is a decision and belongs in the rules file, never in
 `CONTEXT.md`.
 
-Before solving a recurring or environment-specific problem, read relevant
-notes in the project's knowledge directory (see `knowledge.md`). Add a knowledge
-note only after the solution is verified and likely to help a future agent.
-Include symptoms, cause, fix, verification, and references. Never include
-credentials, tokens, or other secrets. Update or supersede stale notes only
-when the replacement is verified.
+### Knowledge notes
+
+Before solving a recurring or environment-specific problem, check the
+project's knowledge directory. When and how to add a note: `knowledge.md`.
 
 ## Completion
 

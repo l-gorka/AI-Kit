@@ -20,7 +20,7 @@ file is only about *what a good ticket looks like*.
 
 ## Body
 
-Every issue has three sections, in this order:
+Every issue has four sections, in this order:
 
 1. **What to build** — the end-to-end behaviour from the user's perspective, not
    a layer-by-layer implementation list. State the outcome, not the steps.
@@ -49,10 +49,7 @@ Paths go stale; reference the glossary term or ADR instead.
 
 ## Blocking edges
 
-Prefer the tracker's native issue dependencies (see `issue-tracker.md` →
-"Blocking"). Where dependencies aren't available, fall back to a
-`Blocked by: #<n>, #<n>` line at the top of the body. A ticket is unblocked when
-every blocker is closed.
+Record blocking edges per `issue-tracker.md` → "Blocking edges".
 
 ## Sizing (planned breakdowns only)
 

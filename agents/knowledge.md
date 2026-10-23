@@ -18,5 +18,6 @@ Each note should contain:
 - Verification
 - Relevant issue, PR, commit, or documentation links
 
-Only record solutions that were verified and are likely to be reusable. Never
-store secrets, credentials, tokens, or unredacted private logs.
+Only record solutions that were verified and are likely to be reusable. Update
+or supersede a stale note only when the replacement is verified. Never store
+secrets, credentials, tokens, or unredacted private logs.

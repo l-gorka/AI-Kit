@@ -2,39 +2,24 @@
 
 <!--
 Copy this file to the root of a project as AGENTS.md and replace <KIT> with the
-path where the kit is mounted (e.g. `.ai-kit`). Delete this comment.
+path where the kit is mounted (e.g. `.ai-kit`). Delete this comment. Keep this
+file an index: project rules go in RULES.md.
 -->
 
 ## Start here
 
-Read `CONTEXT.md` for the repository map. For implementation work, follow
-`<KIT>/agents/workflow.md`. Read `GLOSSARY.md` before naming domain concepts.
-Read `RULES.md` and follow every rule in it.
-For every branch, commit, history rewrite, push, or merge, follow
-`<KIT>/agents/git-workflow.md`.
+- `CONTEXT.md` — repository map and verification commands.
+- `RULES.md` — the owner's rules; how they apply: `<KIT>/agents/rules.md`.
+- `GLOSSARY.md` — product vocabulary.
+- `<KIT>/agents/workflow.md` — how to do implementation work.
+- `<KIT>/agents/git-workflow.md` — every branch, commit, history rewrite,
+  push, or merge.
 
-## Agent skills
+## Reference
 
-### Issue tracker
-
-Issues live in this repository's GitHub Issues (via the `gh` CLI). See `<KIT>/agents/issue-tracker.md`.
-
-### Triage labels
-
-Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `<KIT>/agents/triage-labels.md`.
-
-### Domain docs
-
-The shared vocabulary is in root `GLOSSARY.md`. Architectural decisions are in
-`docs/adr/`. See `<KIT>/agents/domain.md` for the documentation boundaries.
-
-### Reusable knowledge
-
-Before solving a recurring or environment-specific problem, check
-`docs/knowledge/`. Add a note there only after verifying a reusable
-solution; never store secrets. See `<KIT>/agents/knowledge.md`.
-
-### Owner rules
-
-Decisions the project owner has stated live in root `RULES.md`. Propose new
-rules; write them only after approval. See `<KIT>/agents/rules.md`.
+- `<KIT>/agents/issue-tracker.md` — issue tracker operations.
+- `<KIT>/agents/issue-authoring.md` — how to write an issue.
+- `<KIT>/agents/triage-labels.md` — label vocabulary.
+- `<KIT>/agents/knowledge.md` — knowledge notes in `docs/knowledge/`.
+- `<KIT>/agents/vertical-slices.md` — code layout.
+- `<KIT>/agents/unit-testing.md` — where tests go.
