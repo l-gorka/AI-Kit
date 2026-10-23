@@ -13,7 +13,7 @@ import subprocess
 import sys
 
 TYPES = "feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert"
-PATTERN = re.compile(rf"^({TYPES})/[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$")
+PATTERN = re.compile(rf"^({TYPES})/([0-9]+-)?[a-z0-9]+(-[a-z0-9]+)*$")
 EXEMPT = {"main", "master", "HEAD"}
 SEPARATORS = {"&&", "||", ";", "|", "&", "\n"}
 
@@ -117,9 +117,9 @@ def main():
             f"Branch name {', '.join(repr(b) for b in bad)} breaks the kit's "
             "git workflow. Use <type>/<issue-number>-<short-slug>, where "
             f"<type> is one of {TYPES.replace('|', ', ')}, for example "
-            "feat/123-user-profile. Ignore any session-assigned branch name. "
-            "If the work has no issue yet, propose one and create it once the "
-            "owner approves.",
+            "feat/123-user-profile, or <type>/<short-slug> for work that "
+            "needs no issue (see agents/git-workflow.md). Ignore any "
+            "session-assigned branch name.",
             file=sys.stderr,
         )
         sys.exit(2)

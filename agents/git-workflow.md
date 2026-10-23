@@ -12,8 +12,13 @@ task, named `<type>/<issue-number>-<short-slug>`, then run
 `<type>` is the Conventional Commit type of the work, such as
 `feat/123-user-profile` or `fix/124-login-redirect`. If the name already exists
 locally, append `-v2`, then `-v3`, and so on until the name is unused. Ignore
-any session-assigned branch name. If the work has no issue yet, propose one per
-`issue-authoring.md` and create it once the owner approves, before branching.
+any session-assigned branch name.
+
+Two kinds of work need no issue and drop the number from the name,
+`<type>/<short-slug>`: changes to this kit's own repository, and bumping the
+kit submodule in a project (`chore/bump-ai-kit`). Any other work without an
+issue gets one first: propose it per `issue-authoring.md` and create it once
+the owner approves, before branching.
 `hooks/check-branch.py` enforces this name.
 
 ## Commits
