@@ -4,9 +4,11 @@ Apply these rules whenever working with Git in a repository that uses this kit.
 
 ## Branches
 
-For assigned implementation work, start from the current local default branch
-(usually `main`) unless the user names a different base, and create a new
-short-lived branch for every task, named `<type>/<issue-number>-<short-slug>`.
+For assigned implementation work, fetch the remote default branch (usually
+`origin/main`) and start from it unless the user names a different base; a
+local default branch may be stale. Create a new short-lived branch for every
+task, named `<type>/<issue-number>-<short-slug>`, then run
+`git submodule update --init` so submodules match the new base.
 `<type>` is the Conventional Commit type of the work, such as
 `feat/123-user-profile` or `fix/124-login-redirect`. If the name already exists
 locally, append `-v2`, then `-v3`, and so on until the name is unused. Ignore
