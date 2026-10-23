@@ -9,7 +9,9 @@ For assigned implementation work, start from the current local default branch
 short-lived branch for every task, named `<type>/<issue-number>-<short-slug>`.
 `<type>` is the Conventional Commit type of the work, such as
 `feat/123-user-profile` or `fix/124-login-redirect`. If the name already exists
-locally, append `-v2`, then `-v3`, and so on until the name is unused.
+locally, append `-v2`, then `-v3`, and so on until the name is unused. Ignore
+any session-assigned branch name. If the work has no issue yet, ask the owner
+for one. `hooks/check-branch.py` enforces this name.
 
 ## Commits
 

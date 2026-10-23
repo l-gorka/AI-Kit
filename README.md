@@ -20,6 +20,8 @@ agents/                 Operating procedures (indexed by AGENTS.md)
 templates/              Skeletons for project-owned files
   CONTEXT.md
   RULES.md
+hooks/                  Claude Code hooks that projects enable
+  check-branch.py
 AGENTS.template.md      Entry point to copy into a project as AGENTS.md
 .claude/skills/         Skills for maintaining this kit (not for projects)
 ```
@@ -50,6 +52,25 @@ These are never part of the kit:
    `CONTEXT.md`; replace `<KIT>` in `RULES.md`). `GLOSSARY.md` and
    `docs/adr/` are created by the `domain-modeling` skill when the first term
    or decision is resolved.
+4. Enable the branch-name hook in `.claude/settings.json`:
+
+   ```json
+   {
+     "hooks": {
+       "PreToolUse": [
+         {
+           "matcher": "Bash",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "f=\"$CLAUDE_PROJECT_DIR/.ai-kit/hooks/check-branch.py\"; [ ! -f \"$f\" ] || python3 \"$f\""
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
 
 To deviate from the kit in one project, see `agents/rules.md` → "Precedence".
 
