@@ -42,6 +42,7 @@ Paths go stale; reference the glossary term or ADR instead.
 
 ## Labels
 
+- Apply one type label on creation.
 - Apply `ready-for-agent` on creation for any ticket that is fully specified
   and intended for an AFK agent. See `triage-labels.md` for the full vocabulary.
 - Do not apply `needs-triage` to tickets you authored — you already triaged them
