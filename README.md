@@ -15,6 +15,7 @@ agents/                 Operating procedures (indexed by AGENTS.md)
   triage-labels.md
   knowledge.md
   rules.md
+  general-rules.md
   unit-testing.md
   vertical-slices.md
 templates/              Skeletons for project-owned files

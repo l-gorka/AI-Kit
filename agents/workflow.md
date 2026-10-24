@@ -149,7 +149,8 @@ decision, or workflow rule is resolved:
 - Add shared product terms to `GLOSSARY.md`.
 - Add durable architectural trade-offs to `docs/adr/`.
 - Add stable navigation information to `CONTEXT.md`.
-- Propose rules that apply to every project as a change to this kit.
+- Propose rules that apply to every project as a change to this kit's
+  `general-rules.md` (see `rules.md`).
 
 ### One home per statement
 
