@@ -78,10 +78,10 @@ not do itself. File an issue when you encounter any of:
 - tech debt or a refactor opportunity.
 
 **Policy: propose, then create on approval.** Do not create the issue
-automatically. Summarize each proposed issue (title + one-line "what to build" +
-the trigger that surfaced it) and wait for the user to approve, edit, or drop it
-before creating it. Batch multiple proposals into one message when several come
-up in a single task.
+automatically. Summarize each proposed issue (title + type label + one-line
+"what to build" + the trigger that surfaced it) and wait for the user to
+approve, edit, or drop it before creating it. Batch multiple proposals into one
+message when several come up in a single task.
 
 Write every filed issue per `issue-authoring.md`. Drive the tracker per
 `issue-tracker.md`.
