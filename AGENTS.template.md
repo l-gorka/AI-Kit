@@ -9,17 +9,19 @@ file an index: project rules go in RULES.md.
 ## Start here
 
 - `CONTEXT.md` — repository map and verification commands.
-- `RULES.md` — the owner's rules; how they apply: `<KIT>/agents/rules.md`.
+- `<KIT>/guides/rules.md` — how rules apply; the project's `RULES.md` wins
+  over the kit's general rules.
+- `RULES.md` — the owner's rules for this project.
+- `<KIT>/rules/vertical-slices.md` — code layout.
+- `<KIT>/rules/unit-testing.md` — where tests go.
 - `GLOSSARY.md` — product vocabulary.
-- `<KIT>/agents/workflow.md` — how to do implementation work.
-- `<KIT>/agents/git-workflow.md` — every branch, commit, history rewrite,
+- `<KIT>/guides/workflow.md` — how to do implementation work.
+- `<KIT>/guides/git-workflow.md` — every branch, commit, history rewrite,
   push, or merge.
 
-## Reference
+## Skills
 
-- `<KIT>/agents/issue-tracker.md` — issue tracker operations.
-- `<KIT>/agents/issue-authoring.md` — how to write an issue.
-- `<KIT>/agents/triage-labels.md` — label vocabulary.
-- `<KIT>/agents/knowledge.md` — knowledge notes in `docs/knowledge/`.
-- `<KIT>/agents/vertical-slices.md` — code layout.
-- `<KIT>/agents/unit-testing.md` — where tests go.
+Loaded on demand from `.claude/skills/` (symlinked from `<KIT>/skills/`):
+
+- `issues` — writing, labeling, and filing issues; tracker operations.
+- `knowledge` — knowledge notes in `docs/knowledge/`.
