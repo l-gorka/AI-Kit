@@ -93,12 +93,17 @@ Add both hooks to the project's `.claude/settings.json` and commit it:
 
 `Stop` rewrites the record after every turn, because a cloud container can
 be discarded before `SessionEnd` runs; `SessionEnd` writes the final version
-where it does run.
+where it does run. A turn whose record did not change (apart from
+`recorded_at`) pushes nothing. The hook's git calls stop after 40 seconds in
+total, below the 60-second `timeout`; keep the timeout above that, or the hook
+is killed without reporting.
 
 Needs Node.js 18+ and `git` on the `PATH`, push access to the remote, and
 network access to it. No secret is needed when the session can already push
-to `origin` (cloud sessions use the GitHub proxy). Optional environment
-variables:
+to the remote's `run-log` branch, as a local checkout with the owner's
+credentials can. Whether a cloud session's GitHub proxy allows a push to a
+branch other than the session's own is verified when the first project is
+wired. Optional environment variables:
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
@@ -108,7 +113,7 @@ variables:
 
 ### Storage
 
-Each session is one file, `runs/<YYYY-MM>/<session_id>.json` (one JSON line),
+Each session is one file, `runs/<session_id>.json` (one JSON line),
 on the `run-log` branch. The hook commits with Git plumbing and a temporary
 index, so the checkout, index, and `HEAD` are never touched. The branch
 shares no history with product branches; never merge it.
@@ -118,7 +123,7 @@ Query it with DuckDB from a worktree of the branch:
 ```sh
 git fetch origin run-log && git worktree add ../run-log FETCH_HEAD
 duckdb -c "SELECT identity.project, count(*) AS runs, sum(cost.total_usd) AS usd
-           FROM read_json('../run-log/runs/**/*.json') GROUP BY 1"
+           FROM read_json('../run-log/runs/*.json') GROUP BY 1"
 ```
 
 ### Sources and limits

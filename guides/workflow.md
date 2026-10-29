@@ -174,10 +174,11 @@ accepted by a human, and the pull request is open (see `git-workflow.md`).
 
 ### Run summary
 
-End the final message of every session with one fenced `run-summary` block
-(use it even when no issue, pull request, or review applies). A hook reads
-the last such block from the session transcript into the run record; see the
-kit's README → "Run records".
+In a project that wires the run-record hook, the main agent (not subagents)
+ends its final message of every session with one fenced `run-summary` block,
+even when no issue, pull request, or review applies. The hook reads the last
+such block from the session transcript into the run record; see the kit's
+README → "Run records".
 
 ````text
 ```run-summary

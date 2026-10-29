@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Claude Code hook (Stop and SessionEnd): builds this session's run record,
-// validates it, and stores it as runs/<YYYY-MM>/<session_id>.json on the
+// validates it, and stores it as runs/<session_id>.json on the
 // run-log branch. Each call overwrites the session's file, so the last turn
 // wins. Never blocks or fails the session: problems go to the session output
 // as a systemMessage and the hook exits 0.
@@ -19,17 +19,23 @@ import { buildRecord, parseJsonl, validate } from './lib.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const PUSH_ATTEMPTS = 3;
-const GIT_TIMEOUT_MS = 20_000;
+const GIT_TIMEOUT_MS = 15_000;
+// Total time for all git calls, well under the 60 s hook timeout in the
+// README, so a slow remote ends in a reported failure, not a killed hook.
+const TIME_BUDGET_MS = 40_000;
+const startedAt = Date.now();
 
 function report(message) {
   process.stdout.write(`${JSON.stringify({ systemMessage: `run-record: ${message}` })}\n`);
 }
 
 function git(cwd, args, options = {}) {
+  const remaining = TIME_BUDGET_MS - (Date.now() - startedAt);
+  if (remaining < 1000) throw new Error('time budget for git calls used up');
   return execFileSync('git', args, {
     cwd,
     encoding: 'utf8',
-    timeout: GIT_TIMEOUT_MS,
+    timeout: Math.min(GIT_TIMEOUT_MS, remaining),
     stdio: ['pipe', 'pipe', 'pipe'],
     ...options,
   }).trim();
@@ -104,7 +110,23 @@ function repoFacts(cwd) {
 
 // Commits the record onto the run-log branch with plumbing commands and a
 // throwaway index, so the working tree, index, and HEAD stay untouched.
-function store(cwd, filePath, line) {
+function withoutTimestamp(record) {
+  return JSON.stringify({ ...record, recorded_at: null });
+}
+
+// True when the branch already holds this record, apart from recorded_at.
+function unchanged(cwd, parent, filePath, record) {
+  const stored = tryGit(cwd, ['cat-file', 'blob', `${parent}:${filePath}`]);
+  if (!stored) return false;
+  try {
+    return withoutTimestamp(JSON.parse(stored)) === withoutTimestamp(record);
+  } catch {
+    return false;
+  }
+}
+
+function store(cwd, filePath, record) {
+  const line = `${JSON.stringify(record)}\n`;
   const remote = process.env.AI_KIT_RUN_LOG_REMOTE || 'origin';
   const branch = process.env.AI_KIT_RUN_LOG_BRANCH || 'run-log';
   const localRef = `refs/ai-kit/${branch}`;
@@ -128,11 +150,11 @@ function store(cwd, filePath, line) {
       } catch (error) {
         if (!/couldn't find remote ref/i.test(String(error.stderr))) throw error;
       }
+      if (parent && unchanged(cwd, parent, filePath, record)) return;
       rmSync(indexEnv.GIT_INDEX_FILE, { force: true });
       if (parent) git(cwd, ['read-tree', parent], { env: indexEnv });
       git(cwd, ['update-index', '--add', '--cacheinfo', `100644,${blob},${filePath}`], { env: indexEnv });
       const tree = git(cwd, ['write-tree'], { env: indexEnv });
-      if (parent && git(cwd, ['rev-parse', `${parent}^{tree}`]) === tree) return;
       const commitArgs = ['commit-tree', tree, '-m', `run: ${filePath}`];
       if (parent) commitArgs.push('-p', parent);
       const commit = git(cwd, commitArgs, { env });
@@ -190,10 +212,8 @@ function main() {
     return;
   }
 
-  const month = (record.time.start ?? record.recorded_at).slice(0, 7);
-  const filePath = `runs/${month}/${sessionId}.json`;
   try {
-    store(cwd, filePath, `${JSON.stringify(record)}\n`);
+    store(cwd, `runs/${sessionId}.json`, record);
   } catch (error) {
     report(`storing the record failed: ${errorText(error)}`);
   }

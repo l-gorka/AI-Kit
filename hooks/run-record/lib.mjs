@@ -283,7 +283,7 @@ export function buildRecord({ main, subagents, context }) {
     warnings.push('no cost-state entry in the transcript; cost, model wait, tool time and line counts are null');
   }
 
-  const agentTypes = new Map(mainSummary.agentCalls.map((call) => [call.id, call.type]));
+  const agentTypes = new Map(all.flatMap((summary) => summary.agentCalls).map((call) => [call.id, call.type]));
   const subagentRecords = subSummaries.map((sub) => {
     const costUsd = costState ? allocateCost(costPerModel, totalWeight, sub.summary.weightByModel) : null;
     if (costState && costUsd === null && sub.summary.apiRequests > 0) {

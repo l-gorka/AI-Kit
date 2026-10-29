@@ -51,8 +51,10 @@ test('stores the record on the run-log branch without touching the checkout', ()
     const input = { session_id: 's1', transcript_path: transcript, cwd: work, hook_event_name: 'Stop' };
     assert.equal(runHook({}, input), '');
     assert.equal(runHook({}, { ...input, hook_event_name: 'SessionEnd', reason: 'exit' }), '');
+    // Same record apart from recorded_at: no new commit.
+    assert.equal(runHook({}, { ...input, hook_event_name: 'SessionEnd', reason: 'exit' }), '');
 
-    const stored = JSON.parse(git(remote, 'show', 'run-log:runs/2026-03/s1.json'));
+    const stored = JSON.parse(git(remote, 'show', 'run-log:runs/s1.json'));
     assert.equal(stored.recorded_on, 'SessionEnd');
     assert.equal(stored.end_reason, 'exit');
     assert.equal(stored.identity.branch, 'main');
