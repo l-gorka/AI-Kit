@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ai-kit/run-record/v1",
+  "title": "Run record",
+  "description": "One record per agent session. Every field is present; fields that do not apply are null (or empty), never missing.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "recorded_at", "recorded_on", "end_reason",
+    "identity", "agent", "time", "tokens", "cost", "steps", "skills",
+    "subagents", "tool_failures", "review", "repo", "changes", "links",
+    "extras", "warnings"
+  ],
+  "$defs": {
+    "tokens": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input", "output", "thinking", "cache_write", "cache_read"],
+      "properties": {
+        "input": { "type": "integer", "minimum": 0 },
+        "output": { "type": "integer", "minimum": 0, "description": "Includes thinking tokens." },
+        "thinking": { "type": "integer", "minimum": 0 },
+        "cache_write": { "type": "integer", "minimum": 0 },
+        "cache_read": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "nullableString": { "type": ["string", "null"] },
+    "nullableCount": { "type": ["integer", "null"], "minimum": 0 }
+  },
+  "properties": {
+    "schema_version": { "type": "integer", "enum": [1] },
+    "recorded_at": { "type": "string" },
+    "recorded_on": { "type": "string", "enum": ["Stop", "SessionEnd", "manual"] },
+    "end_reason": { "$ref": "#/$defs/nullableString" },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["session_id", "session_link", "project", "branch", "claude_code_version", "entrypoint"],
+      "properties": {
+        "session_id": { "type": "string" },
+        "session_link": { "$ref": "#/$defs/nullableString" },
+        "project": { "$ref": "#/$defs/nullableString" },
+        "branch": { "$ref": "#/$defs/nullableString" },
+        "claude_code_version": { "$ref": "#/$defs/nullableString" },
+        "entrypoint": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["models", "effort", "permission_mode"],
+      "properties": {
+        "models": { "type": "array", "items": { "type": "string" } },
+        "effort": { "$ref": "#/$defs/nullableString" },
+        "permission_mode": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end", "duration_ms", "model_wait_ms", "tool_ms"],
+      "properties": {
+        "start": { "$ref": "#/$defs/nullableString" },
+        "end": { "$ref": "#/$defs/nullableString" },
+        "duration_ms": { "$ref": "#/$defs/nullableCount" },
+        "model_wait_ms": { "$ref": "#/$defs/nullableCount" },
+        "tool_ms": { "$ref": "#/$defs/nullableCount" }
+      }
+    },
+    "tokens": {
+      "description": "All API requests of the session, subagents included, each request counted once.",
+      "$ref": "#/$defs/tokens"
+    },
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_usd", "per_model_usd"],
+      "properties": {
+        "total_usd": { "type": ["number", "null"], "minimum": 0 },
+        "per_model_usd": { "type": "object", "additionalProperties": { "type": "number", "minimum": 0 } }
+      }
+    },
+    "steps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_requests", "tool_calls", "per_tool"],
+      "properties": {
+        "api_requests": { "type": "integer", "minimum": 0 },
+        "tool_calls": { "type": "integer", "minimum": 0 },
+        "per_tool": { "$ref": "#/$defs/counts" }
+      }
+    },
+    "skills": { "$ref": "#/$defs/counts" },
+    "subagents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["agent_id", "type", "models", "api_requests", "tool_calls", "tokens", "cost_usd"],
+        "properties": {
+          "agent_id": { "type": "string" },
+          "type": { "$ref": "#/$defs/nullableString" },
+          "models": { "type": "array", "items": { "type": "string" } },
+          "api_requests": { "type": "integer", "minimum": 0 },
+          "tool_calls": { "type": "integer", "minimum": 0 },
+          "tokens": { "$ref": "#/$defs/tokens" },
+          "cost_usd": { "type": ["number", "null"], "minimum": 0 }
+        }
+      }
+    },
+    "tool_failures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "per_tool"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "per_tool": { "$ref": "#/$defs/counts" }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rounds", "findings_per_round"],
+      "properties": {
+        "rounds": { "$ref": "#/$defs/nullableCount" },
+        "findings_per_round": {
+          "type": ["array", "null"],
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "repo": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["packed_bytes", "tracked_files", "commits", "shallow"],
+      "properties": {
+        "packed_bytes": { "$ref": "#/$defs/nullableCount" },
+        "tracked_files": { "$ref": "#/$defs/nullableCount" },
+        "commits": { "$ref": "#/$defs/nullableCount" },
+        "shallow": { "type": ["boolean", "null"] }
+      }
+    },
+    "changes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lines_added", "lines_removed"],
+      "properties": {
+        "lines_added": { "$ref": "#/$defs/nullableCount" },
+        "lines_removed": { "$ref": "#/$defs/nullableCount" }
+      }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["issue", "pull_request"],
+      "properties": {
+        "issue": { "$ref": "#/$defs/nullableString" },
+        "pull_request": { "$ref": "#/$defs/nullableString" }
+      }
+    },
+    "extras": { "type": ["object", "null"] },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -171,3 +171,21 @@ Work is complete when the acceptance criteria are met, the relevant tests and
 lint/build checks pass, the diff is scoped, durable documentation is updated,
 the separate review-agent pass is complete or its findings are explicitly
 accepted by a human, and the pull request is open (see `git-workflow.md`).
+
+### Run summary
+
+End the final message of every session with one fenced `run-summary` block
+(use it even when no issue, pull request, or review applies). A hook reads
+the last such block from the session transcript into the run record; see the
+kit's README → "Run records".
+
+````text
+```run-summary
+{"issue": "<issue URL or null>", "pull_request": "<PR URL or null>", "review_findings": [3, 0], "extras": null}
+```
+````
+
+- `review_findings`: one count per review round, in order: the findings each
+  review-agent pass raised. `[]` when no review ran.
+- `extras`: an object with project-specific fields, or `null`.
+- Never put secrets, tokens, or prompt text in the block.
