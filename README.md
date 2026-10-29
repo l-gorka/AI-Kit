@@ -15,6 +15,7 @@ rules/                  General rules for every project (indexed by AGENTS.md)
   unit-testing.md
   vertical-slices.md
 skills/                 Procedures loaded on demand (symlinked into projects)
+  autopilot/SKILL.md
   issues/SKILL.md
   knowledge/SKILL.md
 templates/              Skeletons for project-owned files
@@ -66,8 +67,21 @@ To deviate from the kit in one project, see `guides/rules.md` → "Precedence".
 The kit's own skills live in `skills/` and reach a project through the
 symlinks from step 4, so they update with the submodule:
 
+- `autopilot` — works through the project's `ready-for-agent` issues in
+  waves until their pull requests are merged; the owner starts it with
+  `/autopilot`.
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — the project's knowledge notes.
+
+### What `autopilot` needs from a project
+
+- Merge rights for the agent's GitHub access, or auto-merge enabled on the
+  repository.
+- CI that runs on pull requests; `autopilot` never merges without it.
+- A cloud environment for the project with its keys as environment secrets
+  and its setup script installing the toolchain.
+- The labels from the `issues` skill, including `needs-info` and
+  `ready-for-human`.
 
 Other skills (`/grill-with-docs`, `/to-tickets`, `domain-modeling`, ...) are
 not part of this kit. Install them per machine: locally in the user skills

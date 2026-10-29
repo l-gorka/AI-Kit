@@ -23,5 +23,6 @@ file an index: project rules go in RULES.md.
 
 Loaded on demand from `.claude/skills/` (symlinked from `<KIT>/skills/`):
 
+- `autopilot` — owner-started: ready issues to merged pull requests.
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — knowledge notes in `docs/knowledge/`.
