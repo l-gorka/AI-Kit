@@ -3,8 +3,8 @@
 This document defines the default operating procedure for implementation work.
 It applies to every workspace in the repository unless the issue narrows the
 scope. Project-specific facts (repository map, stack, commands) live in the
-project's `CONTEXT.md`, and the project's conventions live in its rules file
-(see `rules.md`), not here.
+project's `CONTEXT.md`, and conventions live in the kit's general rules and
+the project's rules file (see `rules.md`), not here.
 
 ## Modes
 
@@ -12,7 +12,7 @@ project's `CONTEXT.md`, and the project's conventions live in its rules file
 
 Use this mode when working on an assigned issue.
 
-1. Read `CONTEXT.md`, `GLOSSARY.md`, the rules file (see `rules.md`), relevant
+1. Read `CONTEXT.md`, `GLOSSARY.md`, the rules (see `rules.md`), relevant
    specifications and ADRs, the assigned issue, and relevant knowledge notes.
    Read any design or convention documents that `CONTEXT.md` points to for the
    area you touch.
@@ -26,7 +26,7 @@ Use this mode when working on an assigned issue.
 5. Keep the diff scoped. Surface adjacent improvements, bugs, spec/implementation
    mismatches, TODOs, and tech debt as follow-up issues (see "Filing follow-up
    issues" below) rather than expanding the current diff. Follow the
-   rules file and the code layout in `vertical-slices.md`.
+   general rules and the project's rules file.
 6. Verify the change using the risk-based test strategy below.
 7. Review the resulting diff for scope, acceptance criteria, error handling,
    and documentation impact.
@@ -35,7 +35,7 @@ Use this mode when working on an assigned issue.
    the implementation diff is verified. Review agents inspect the diff,
    acceptance criteria, scope, and supplied verification evidence; they do not
    rerun lint, build, or test commands. They also check the diff against the
-   rules file and report unexplained deviations. The implementation agent owns
+   general rules and the rules file and report unexplained deviations. The implementation agent owns
    verification.
 10. Scope every review to the repository's own source. Do not read installed,
     vendored, or generated third-party code (`node_modules`, dependency
@@ -56,7 +56,7 @@ task's own issue when it has none, and the task's pull request (both per
 
 Use this mode only when the task explicitly asks for issue or PR management.
 This mode may create, edit, label, comment on, or close tracker items using
-the repository's issue-tracker conventions (`issue-tracker.md`).
+the `issues` skill.
 
 ## Editing files
 
@@ -83,8 +83,7 @@ automatically. Summarize each proposed issue (title + type label + one-line
 approve, edit, or drop it before creating it. Batch multiple proposals into one
 message when several come up in a single task.
 
-Write every filed issue per `issue-authoring.md`. Drive the tracker per
-`issue-tracker.md`.
+Write every filed issue and drive the tracker per the `issues` skill.
 
 ## Scope and specifications
 
@@ -96,7 +95,7 @@ silently change a contract while implementing an unrelated task.
 When sources disagree, use the glossary for terminology, the specifications
 for desired behavior, ADRs for architectural rationale, and the current issue
 for task scope. For conflicts between the rules file and this kit, see
-`rules.md`.
+`rules.md` → "Precedence".
 
 When a requirement is materially ambiguous, ask a focused question and pause
 that part of the implementation. Do not turn an unconfirmed assumption into a
@@ -112,7 +111,7 @@ job.
 
 ## Testing strategy
 
-See `unit-testing.md` for where test files live.
+See the kit's `rules/unit-testing.md` for where test files live.
 
 Choose tests by risk:
 
@@ -149,7 +148,8 @@ decision, or workflow rule is resolved:
 - Add shared product terms to `GLOSSARY.md`.
 - Add durable architectural trade-offs to `docs/adr/`.
 - Add stable navigation information to `CONTEXT.md`.
-- Propose rules that apply to every project as a change to this kit.
+- Propose rules that apply to every project as a change to the kit's
+  `rules/`.
 
 ### One home per statement
 
@@ -162,7 +162,8 @@ boundary — is a decision and belongs in the rules file, never in
 ### Knowledge notes
 
 Before solving a recurring or environment-specific problem, check the
-project's knowledge directory. When and how to add a note: `knowledge.md`.
+project's knowledge directory. When and how to add a note: the `knowledge`
+skill.
 
 ## Completion
 

@@ -18,7 +18,7 @@ Two kinds of work need no issue: changes to this kit's own repository, and
 bumping the kit submodule in a project. When such work has an issue anyway,
 keep its number in the name; without one, name the branch
 `<type>/<short-slug>`, such as `chore/bump-ai-kit`. Any other work without an
-issue gets one first: propose it per `issue-authoring.md` and create it once
+issue gets one first: propose it per the `issues` skill and create it once
 the owner approves, before branching.
 
 ## Commits

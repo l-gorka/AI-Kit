@@ -1,7 +1,8 @@
 # Owner rules
 
-Decisions the project owner has stated. How they apply and change:
-`<KIT>/agents/rules.md`.
+Decisions the project owner has stated. They add to or override the kit's
+general rules in `<KIT>/rules/`. How they apply and change:
+`<KIT>/guides/rules.md`.
 
 ## <Rule title>
 
