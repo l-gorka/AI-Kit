@@ -149,7 +149,8 @@ decision, or workflow rule is resolved:
 - Add durable architectural trade-offs to `docs/adr/`.
 - Add stable navigation information to `CONTEXT.md`.
 - Propose rules that apply to every project as a change to the kit's
-  `rules/`.
+  `rules/general-rules.md` (see `rules.md` → "Project rule or general
+  rule").
 
 ### One home per statement
 

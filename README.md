@@ -12,6 +12,7 @@ guides/                 Procedures for nearly every session (indexed by AGENTS.m
   git-workflow.md
   rules.md
 rules/                  General rules for every project (indexed by AGENTS.md)
+  general-rules.md
   unit-testing.md
   vertical-slices.md
 skills/                 Procedures loaded on demand (symlinked into projects)
