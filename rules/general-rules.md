@@ -4,6 +4,15 @@ Decisions the owner has stated for every project. The project's rules file
 overrides any of them. How they apply, which rules belong here, and how rules
 are added: `guides/rules.md`.
 
+## Build each repository as a simple modular monolith
+
+Keep one repository with three top-level parts: `web/` for the client,
+`server/` for the backend, and `shared/` for code both use; split each part
+into feature modules, and add no extra packages, services, or layers until a
+real need appears.
+Why: one deployable codebase with clear module boundaries stays simple to
+read, run, and change.
+
 ## Split complex components into smaller ones
 
 Give each distinct part of a complex component its own component and file.
@@ -28,7 +37,7 @@ add files without adding meaning.
 ## Share schemas and types between server and client
 
 Define the types and validation schemas that both the server and the client
-use once, in the shared package, and validate every request body with its
+use once, in `shared/`, and validate every request body with its
 shared schema.
 Why: one schema means one validation rule on both sides.
 
@@ -36,19 +45,13 @@ Why: one schema means one validation rule on both sides.
 
 Export shared UI primitives through one index; primitives take all content
 and state through props and never import from a feature slice.
-Why: every slice and the showcase can use them unchanged.
+Why: every slice can use them unchanged.
 
 ## Keep presentational components free of data and routing
 
 Give presentational components a handful of props in domain vocabulary, and
 never let them fetch data, route, or handle the session.
-Why: they render the same in tests and the showcase as in the app.
-
-## Add every component to the showcase
-
-Render each shared primitive and feature component in the showcase in each
-visual state, with mock data only from the showcase's fixtures.
-Why: every state can be reviewed without a backend.
+Why: they render the same in tests as in the app.
 
 ## Mirror source folders in tests
 
