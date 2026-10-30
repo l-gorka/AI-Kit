@@ -27,17 +27,17 @@ Quote `file:line` for every finding.
   kit or between the kit and a project. Includes counts that don't match
   their lists.
 - **Meta-rule violation**: a break of the kit's own rules — one home per
-  statement (`guides/workflow.md`), facts-only `CONTEXT.md`, the rules
-  format and precedence (`guides/rules.md`), `AGENTS.template.md` as an index
-  only, and the split between always-read `guides/` and `rules/` and
-  on-demand `skills/` (each `SKILL.md` description says when to use it).
+  statement and facts-only `CONTEXT.md` (`rules/workflow.md`), the rules
+  format and precedence (`skills/rules/SKILL.md`), `AGENTS.template.md` as
+  an index only, and the split between always-read `rules/` and on-demand
+  `skills/` (each `SKILL.md` description says when to use it).
 - **Unused or broken**: a kit document no project's `AGENTS.md` reaches; a
   kit skill a project does not symlink into `.claude/skills/`; a file,
   label, or link that is referenced but does not exist; the README layout
   out of sync with the files.
 - **Misplaced**: project-specific content in the kit; a generic rule a
   project copied into its `RULES.md` that belongs in the kit's `rules/`; a
-  task-specific procedure in `guides/` that belongs in a skill, or one needed
+  task-specific procedure in `rules/` that belongs in a skill, or one needed
   in nearly every session that sits in a skill.
 - **Bloat**: wording that can be cut without losing a rule; sections no agent
   would act on.

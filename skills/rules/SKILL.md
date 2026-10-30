@@ -1,10 +1,16 @@
+---
+name: rules
+description: How rules are written, applied, and changed at the kit and project level. Use before adding, changing, deleting, or moving a rule, and when reviewing a diff against the rules.
+---
+
 # Rules
 
-Rules are code conventions and other "do this" statements: code layout,
-module boundaries, naming, test placement. They live at two levels:
+Rules are "do this" statements that agents read on every task: code layout,
+module boundaries, naming, test placement, how to work. Procedures loaded
+only for one kind of task are skills, not rules. Rules live at two levels:
 
-- **General rules** in the kit's `rules/` directory apply to every project
-  that mounts the kit.
+- **Kit rules** in the kit's `rules/` directory apply to every project that
+  mounts the kit.
 - **Project rules** in the project's rules file (default: `RULES.md` at the
   repo root) are decisions and preferences the project owner has stated. They
   add rules or override general ones for that project.
@@ -14,21 +20,19 @@ a rule.
 
 ## Precedence
 
-The project's rules file takes precedence over the kit's general rules and
-every other document in this kit. To deviate from the kit in one project (a
-different tracker, label vocabulary, code layout, or test placement), add a
-rule to that project's rules file; never edit kit files for one project.
-
-When two statements still conflict — two kit documents, or two rules at the
-same level — ask the owner which one holds before acting on either.
+The project's rules file wins over every kit rule and skill (kit
+`rules/workflow.md`). To deviate from the kit in one project (a different
+tracker, label vocabulary, code layout, or test placement), add a rule to
+that project's rules file; never edit kit files for one project.
 
 ## Format
 
-General rules: the owner's short rules for every project in
-`rules/general-rules.md`, and one file per topic in `rules/` for defaults that
-need a layout or examples (each stating its default and its scope).
+Kit rules: short rules in `rules/general-rules.md` (code) and
+`rules/workflow.md` (how to work), and one file per topic in `rules/` for
+defaults that need a layout or examples (each stating its default and its
+scope).
 
-Short rules, in `rules/general-rules.md` and the project's rules file: one
+Short rules, in those two files and the project's rules file: one
 `##` heading per rule, then one imperative sentence and a one-line `Why:`. No
 examples; keep the files short, since agents read them on every task.
 
@@ -36,7 +40,7 @@ examples; keep the files short, since agents read them on every task.
 
 Rules are defaults, not mechanical checks. Implementing agents follow them and
 state any deliberate deviation, with its reason, in the handoff. Review
-agents read the general rules and the rules file and report unexplained
+agents read the kit rules and the rules file and report unexplained
 deviations as findings.
 
 ## Adding or changing a rule

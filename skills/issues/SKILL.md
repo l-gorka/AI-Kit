@@ -7,13 +7,12 @@ description: How to write, file, label, and link issues in the issue tracker (Gi
 
 What a good issue looks like and how to drive the tracker. A project on a
 different tracker or label vocabulary records it in its `RULES.md` (see the
-kit's `guides/rules.md`).
+`rules` skill).
 
 ## Writing an issue
 
 Read this before creating an issue, whether it comes from a planned breakdown
-(`/to-tickets`) or a follow-up filed mid-implementation (see the kit's
-`guides/workflow.md` → "Filing follow-up issues").
+(`/to-tickets`) or a follow-up filed mid-implementation (see "Filing follow-up issues").
 
 ### Title
 
@@ -63,6 +62,22 @@ Each ticket from `/to-tickets` is a tracer-bullet vertical slice: narrow but
 complete through every layer, demoable on its own, sized to fit a single fresh
 context window. Single follow-up issues don't need to be slices — they're one
 piece of work — but keep them scoped to one verifiable outcome.
+
+## Filing follow-up issues
+
+File a follow-up issue for work you discover but do not do yourself:
+
+- an adjacent improvement that is out of scope for the current task,
+- a bug found while working on something else,
+- a specification/implementation mismatch that needs a contract change,
+- a TODO/FIXME discovered in code,
+- tech debt or a refactor opportunity.
+
+**Policy: propose, then create on approval.** Do not create the issue
+automatically. Summarize each proposed issue (title + type label + one-line
+"what to build" + the trigger that surfaced it) and wait for the owner to
+approve, edit, or drop it before creating it. Batch multiple proposals into
+one message when several come up in a single task.
 
 ## Labels
 

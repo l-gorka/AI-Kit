@@ -2,7 +2,7 @@
 
 Decisions the owner has stated for every project. The project's rules file
 overrides any of them. How they apply, which rules belong here, and how rules
-are added: `guides/rules.md`.
+are added: the `rules` skill.
 
 ## Build each repository as a simple modular monolith
 
