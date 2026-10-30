@@ -19,6 +19,7 @@ skills/                 Procedures loaded on demand (symlinked into projects)
   issues/SKILL.md
   knowledge/SKILL.md
   rules/SKILL.md
+knowledge/              Verified notes on stack and environment problems
 templates/              Skeletons for project-owned files
   CONTEXT.md
   RULES.md
@@ -34,7 +35,8 @@ These are never part of the kit:
 - `CONTEXT.md` (facts: repo map, verification commands, environment notes)
 - `RULES.md` (decisions the project owner has stated: project-specific
   conventions and every deviation from this kit; see the `rules` skill)
-- `docs/knowledge/` (verified notes for that repo's problems)
+- `docs/knowledge/` (verified notes for that repo's own problems; notes that
+  hold in any project on the same stack go in the kit's `knowledge/`)
 - CI configuration
 
 ## Using it in a project
@@ -74,7 +76,7 @@ symlinks from step 4, so they update with the submodule:
 - `git` — branches, commits, pushes, pull requests, merges.
 - `implement` — taking an assigned issue to an open pull request.
 - `issues` — writing, labeling, and filing issues; tracker operations.
-- `knowledge` — the project's knowledge notes.
+- `knowledge` — knowledge notes in the kit and the project.
 - `rules` — adding, changing, or moving a rule.
 
 Other skills (`/grill-with-docs`, `/to-tickets`, `domain-modeling`, ...) are

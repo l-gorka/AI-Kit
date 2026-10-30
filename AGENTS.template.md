@@ -24,5 +24,5 @@ Loaded on demand from `.claude/skills/` (symlinked from `<KIT>/skills/`):
 - `git` — branches, commits, pushes, pull requests, merges.
 - `implement` — taking an assigned issue to an open pull request.
 - `issues` — writing, labeling, and filing issues; tracker operations.
-- `knowledge` — knowledge notes in `docs/knowledge/`.
+- `knowledge` — knowledge notes in `<KIT>/knowledge/` and `docs/knowledge/`.
 - `rules` — adding, changing, or moving a rule.
