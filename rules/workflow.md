@@ -46,6 +46,16 @@ so and record it as follow-up work unless the task authorizes the change;
 when a requirement is materially ambiguous, ask instead of assuming.
 Why: specifications and ADRs change only by decision, never as a side effect.
 
+## Never decide a business rule
+
+Never change, approximate, or trade away a product behavior the specification
+defines (what the user sees, how content is cut, counted, or chosen), even as
+an implementation detail; when the specified behavior is hard to meet, stop
+and ask the owner with the evidence, and never recommend accepting a
+deviation from it.
+Why: business rules belong to the owner, and a workaround that quietly
+changes one breaks the product while looking like progress.
+
 ## Use the glossary's terms
 
 Name domain concepts in issues, proposals, code, and tests as `GLOSSARY.md`
