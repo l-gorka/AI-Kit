@@ -1,4 +1,9 @@
-# Git workflow
+---
+name: git
+description: Branch, commit, push, pull request, and merge rules for this project. Load before creating a branch, committing, rewriting history, pushing, opening a pull request, or merging; these rules replace the agent's built-in Git habits.
+---
+
+# Git
 
 Apply these rules whenever working with Git in a repository that uses this kit.
 
