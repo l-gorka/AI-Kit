@@ -14,10 +14,11 @@ costs more to maintain than the failures it prevents.
 
 ## Build each repository as a simple modular monolith
 
-Keep one repository with three top-level parts: `web/` for the client,
-`server/` for the backend, and `shared/` for code both use; split each part
-into feature modules, and add no extra packages, services, or layers until a
-real need appears.
+Keep one repository with four top-level parts: `web/` for the client,
+`server/` for the backend, `shared/` for code both use, and `e2e/` for
+end-to-end tests; split `web/` and `server/` into slices
+(`vertical-slices.md`), and add no extra packages, services, or layers until
+a real need appears.
 Why: one deployable codebase with clear module boundaries stays simple to
 read, run, and change.
 
