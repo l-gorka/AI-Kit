@@ -56,6 +56,14 @@ Export shared UI primitives through one index; primitives take all content
 and state through props and never import from a feature slice.
 Why: every slice can use them unchanged.
 
+## Style the UI through theme tokens
+
+Define colors, fonts, spacing, radii, and shadows once as semantic theme
+tokens (such as `surface` or `muted`, not raw palette values like `gray-100`),
+and style screens only through those tokens and the shared UI primitives.
+Why: a new design changes the token values and the primitives, not every
+screen.
+
 ## Keep presentational components free of data and routing
 
 Give presentational components a handful of props in domain vocabulary, and
