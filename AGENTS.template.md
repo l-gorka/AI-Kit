@@ -20,6 +20,7 @@ file an index: project rules go in RULES.md.
 
 Loaded on demand from `.claude/skills/` (symlinked from `<KIT>/skills/`):
 
+- `autopilot` — driving a set of issues to merged pull requests (owner-started).
 - `git` — branches, commits, pushes, pull requests, merges.
 - `implement` — taking an assigned issue to an open pull request.
 - `issues` — writing, labeling, and filing issues; tracker operations.
