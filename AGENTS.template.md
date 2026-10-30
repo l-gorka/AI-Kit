@@ -11,6 +11,7 @@ file an index: project rules go in RULES.md.
 - `CONTEXT.md` — repository map and verification commands.
 - `<KIT>/guides/rules.md` — how rules apply; the project's `RULES.md` wins
   over the kit's general rules.
+- `<KIT>/rules/general-rules.md` — the owner's rules for every project.
 - `RULES.md` — the owner's rules for this project.
 - `<KIT>/rules/vertical-slices.md` — code layout.
 - `<KIT>/rules/unit-testing.md` — where tests go.

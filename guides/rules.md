@@ -24,12 +24,13 @@ same level — ask the owner which one holds before acting on either.
 
 ## Format
 
-General rules: one file per topic in `rules/`, each stating its default and
-its scope.
+General rules: the owner's short rules for every project in
+`rules/general-rules.md`, and one file per topic in `rules/` for defaults that
+need a layout or examples (each stating its default and its scope).
 
-Project rules: one `##` heading per rule, then one imperative sentence and a
-one-line `Why:`. No examples; keep the file short, since agents read it on
-every task.
+Short rules, in `rules/general-rules.md` and the project's rules file: one
+`##` heading per rule, then one imperative sentence and a one-line `Why:`. No
+examples; keep the files short, since agents read them on every task.
 
 ## How rules apply
 
@@ -41,7 +42,20 @@ deviations as findings.
 ## Adding or changing a rule
 
 When the owner states a decision that should outlive the current task, draft
-the rule and propose it: in the project's rules file when it is specific to
-that project, as a change to the kit's `rules/` when it applies to every
-project. Write it only after the owner approves the wording. Never add, edit,
-or delete a rule without approval.
+the rule and propose it. Write it only after the owner approves the wording.
+Never add, edit, or delete a rule without approval.
+
+## Project rule or general rule
+
+Choose the home when drafting a rule:
+
+- **Project rules file**: the rule names the project's paths, domain terms,
+  or stack, or the owner stated it for this project only.
+- **`rules/general-rules.md`**: the rule would still hold in a new project
+  with a different product. Write it without project names.
+
+A new rule starts in the project's rules file. Propose moving it to
+`rules/general-rules.md` when the owner says it applies to every project, or
+states it again in a second project. The move deletes it from the project's
+rules file, which keeps only the project-specific detail an agent still
+needs. Changing `rules/general-rules.md` is a change to this kit.
