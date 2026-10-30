@@ -4,6 +4,14 @@ Decisions the owner has stated for every project. The project's rules file
 overrides any of them. How they apply, which rules belong here, and how rules
 are added: the `rules` skill.
 
+## Prefer simplicity over covering every edge case
+
+Choose the simplest solution that handles the likely cases, and leave out
+handling for unlikely edge cases or brief, minor slowdowns unless failing
+there would lose data, open a security hole, or corrupt state.
+Why: simple code is easier to read and change, and code for rare cases
+costs more to maintain than the failures it prevents.
+
 ## Build each repository as a simple modular monolith
 
 Keep one repository with three top-level parts: `web/` for the client,
@@ -52,6 +60,14 @@ Why: every slice can use them unchanged.
 Give presentational components a handful of props in domain vocabulary, and
 never let them fetch data, route, or handle the session.
 Why: they render the same in tests as in the app.
+
+## Write few, meaningful unit tests
+
+Test the behaviour and business rules that would hurt if they broke, one test
+per distinct behaviour, and skip tests for trivial code, framework behaviour,
+unlikely edge cases, or details that only repeat the implementation.
+Why: each test costs maintenance, and a small suite that catches real bugs
+beats a large one that only raises the count.
 
 ## Mirror source folders in tests
 
