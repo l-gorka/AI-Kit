@@ -13,14 +13,14 @@ runs.
 
 ## Fix
 
-Update the pull request branch with the base as the `git` skill says,
-resolve the conflicts, and push; CI then runs. When several pull requests
-are open in parallel, check `mergeable_state` after each merge and update the
-ones that went `dirty`.
+Merge the base branch into the pull request branch, resolve the conflicts,
+and push; CI then runs. When several pull requests are open in parallel,
+check `mergeable_state` after each merge and update the ones that went
+`dirty`.
 
 ## Verification
 
-After updating the branch with `main` and pushing, the check ran and passed.
+After merging `main` into the branch and pushing, the check ran and passed.
 
 ## Links
 

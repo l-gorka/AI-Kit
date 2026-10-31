@@ -20,9 +20,10 @@ that scope; when results suggest a bigger change, stop and ask.
 
 Start one cloud session per issue, visible to the owner, titled with the
 issue number. Its brief: the issue, the facts it needs from earlier work, and
-"follow the `implement` skill, open a pull request, keep it mergeable, fix
-red CI, message me when green". Run issues in parallel unless they change the
-same files; then run them one after another.
+"follow the `implement` skill, open a pull request, keep it mergeable (merge
+the default branch on conflict), fix red CI, message me when green". Run
+issues in parallel unless they change the same files; then run them one
+after another.
 
 ## Merge
 

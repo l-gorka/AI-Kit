@@ -35,9 +35,8 @@ subject capitalization is unrestricted.
 
 - Make one commit per logical change, in order. Each verified stage gets its
   own commit; later work goes into a new commit.
-- Do not amend, squash, or reorder a commit that represents a finished,
-  verified stage; rebasing the branch onto the default branch (below) is the
-  only allowed rewrite.
+- Do not amend, squash, rebase, or otherwise rewrite a commit that represents
+  a finished, verified stage.
 - `--amend` is only for correcting the just-created commit before review; it
   must not fold in new work.
 - Do not rewrite history merely to produce one clean commit.
@@ -54,18 +53,6 @@ The body links the issue (`Closes #<n>`) and summarizes what changed and how
 it was verified.
 
 Do not push or open the pull request while verification fails or review
-findings are unresolved; report the blocker to the owner instead.
-
-## Keeping the branch current
-
-Never create a merge commit: no `git merge`, no plain `git pull`, no "Update
-branch" merge button. To take in the default branch or resolve a conflict,
-run `git fetch origin` and `git rebase origin/main`, resolve each conflict,
-re-run verification, and push with `git push --force-with-lease`. Force-push
-only your own pull request branch, never the default branch.
-
-## Merging
-
-Merge only with explicit approval, and only by squash (`merge_method:
-squash`), with the pull request title as the commit title and GitHub's
-`(#<n>)` suffix. Never use the merge or rebase methods.
+findings are unresolved; report the blocker to the owner instead. Merge only
+with explicit approval, and only by squash (`merge_method: squash`), with the
+pull request title as the commit title; never create a merge commit.
