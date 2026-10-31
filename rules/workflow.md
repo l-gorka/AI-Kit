@@ -56,6 +56,23 @@ deviation from it.
 Why: business rules belong to the owner, and a workaround that quietly
 changes one breaks the product while looking like progress.
 
+## Settle cheap-to-change decisions without studies
+
+When a choice is cheap to reverse later (a model, a prompt's wording, a
+default value, a library detail) and is not a business rule, pick a sensible
+default, state it in the handoff, and move on; run comparisons, benchmarks,
+or measurement studies only when the specification or the owner asks for
+them.
+Why: studies cost hours and the owner's attention, while a cheap choice can
+be tuned once real use shows it matters.
+
+## Ask questions with a recommended answer
+
+When a decision needs the owner, ask a specific question with a few options,
+mark one as recommended with its reason, and say what you will do by
+default.
+Why: the owner can answer in one word, and the work stays simple either way.
+
 ## Use the glossary's terms
 
 Name domain concepts in issues, proposals, code, and tests as `GLOSSARY.md`
