@@ -71,8 +71,8 @@ To deviate from the kit in one project, add a rule to its `RULES.md`; see the
 The kit's own skills live in `skills/` and reach a project through the
 symlinks from step 4, so they update with the submodule:
 
-- `autopilot` — the standing orchestrator for an `orchestrator` issue: one
-  session per ready sub-issue, merges only with approval (started by the
+- `autopilot` — working through an autopilot issue's sub-issues, one
+  session per ready sub-issue, merging only with approval (started by the
   owner).
 - `git` — branches, commits, pushes, pull requests, merges.
 - `implement` — taking an assigned issue to an open pull request.

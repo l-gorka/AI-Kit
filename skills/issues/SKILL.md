@@ -114,9 +114,8 @@ Where the issue stands.
 | `ready-for-human` | Requires human implementation |
 | `wontfix` | Will not be actioned |
 
-The `orchestrator` label marks the long-lived issue an `autopilot` session
-works from; its sub-issues are that session's scope. It carries no type or
-triage label.
+The `autopilot` label marks an issue whose sub-issues an `autopilot`
+session works through. It carries no type or triage label.
 
 ## Tracker: GitHub
 

@@ -1,38 +1,39 @@
 ---
 name: autopilot
-description: Run as the standing orchestrator for one `orchestrator` issue: start one cloud session per ready sub-issue in blocking order, keep their pull requests mergeable, and merge only with the owner's approval. Use only when the owner starts it.
+description: Work through the sub-issues of one autopilot issue: start one cloud session per ready-for-agent sub-issue in blocking order, keep their pull requests mergeable, and merge only with the owner's approval. Use only when the owner starts it.
 disable-model-invocation: true
 ---
 
 # Autopilot
 
-You orchestrate; issue sessions do the work. You stay until the owner stops
-you, sleeping between events. Starting this skill approves creating issue
-sessions and the hourly wake-up below. It approves no merge.
+You coordinate; issue sessions do the work. You run until the owner stops
+you, idle between events. Starting this skill approves creating issue
+sessions and the hourly check below. It approves no merge.
 
 ## Start
 
-The owner names the orchestrator issue. Label it `orchestrator` and record
-this session's link and ID in its body under "Orchestrator session",
-replacing older ones. Create a scheduled task that fires into this session
-every hour with "autopilot: run a pass", and record its ID there too.
+The owner gives you an autopilot issue: a GitHub issue whose sub-issues are
+the work. Label it `autopilot` and comment this session's link on it.
+
+Nothing tells you when a sub-issue becomes `ready-for-agent`, so create a
+scheduled task that sends this session "run a pass" every hour.
 
 ## Scope
 
-Work only on open sub-issues of the orchestrator issue. When results suggest
-a bigger change, stop and ask.
+Work only on open sub-issues of the autopilot issue that are
+`ready-for-agent`. Triage gets them there; you never triage. When results
+suggest a bigger change, stop and ask.
 
 ## State lives on GitHub
 
-Keep no state only in your context. When you start an issue session, replace
-`ready-for-agent` with `in-progress` and comment the session link on the
-sub-issue. Blocking edges give the order. Each pass rebuilds the picture from
-GitHub, so a successor can take over from the orchestrator issue alone.
+When you start an issue session, replace `ready-for-agent` with
+`in-progress` and comment the session link on the sub-issue. Blocking edges
+give the order. Read the state from GitHub on every pass, not from memory.
 
 ## The pass
 
-Run on every wake-up: a message from triage or an issue session, a pull
-request event, the hourly scheduled task, or the owner.
+Run on every wake-up: the hourly message, a message from an issue session, a
+pull request event, or the owner.
 
 1. Read the sub-issues: labels, blockers, sessions, pull requests.
 2. Start an issue session for each `ready-for-agent` sub-issue whose blockers
@@ -40,8 +41,8 @@ request event, the hourly scheduled task, or the owner.
 3. Subscribe to each new pull request's activity.
 4. When a pull request's CI on the current head is green, it has no conflict,
    and a review against the rules found nothing blocking, tell the owner and
-   comment on the orchestrator issue: "#<pr> is ready to merge". Send
-   blocking findings back to the issue's session.
+   comment on the autopilot issue: "#<pr> is ready to merge". Send blocking
+   findings back to the issue's session.
 5. End the turn. Never poll or wait in a loop; the next event wakes you.
 
 ## Issue sessions
@@ -55,7 +56,7 @@ green or blocked".
 ## Merge
 
 Merge only with the owner's approval: a `merge` comment on the pull request,
-a message in this session, or a standing approval in the orchestrator issue
+a message in this session, or a standing approval in the autopilot issue
 body (such as "merge when green"). Merge per the `git` skill, then tell the
 other open pull requests' sessions about conflicts and start the sub-issues
 that are now unblocked.
@@ -64,26 +65,10 @@ that are now unblocked.
 
 Collect what only the owner can do (dashboard settings, secrets, sign-ins,
 decisions) into one plain-language message with exact steps, also posted on
-the orchestrator issue. Keep working on everything that does not depend on it.
+the autopilot issue. Keep working on everything that does not depend on it.
 
-## Handoff and stop
+## Stop
 
-When your context grows heavy, start a fresh session with "follow the
-`autopilot` skill for #<orchestrator issue>"; once it has recorded itself,
-delete your scheduled task, tell the owner, and stop. When the owner says
-stop, delete your scheduled task, remove your session from the orchestrator
-issue body, and comment a summary there: merged, still open, waiting on the
-owner.
-
-## Triage feeding this skill
-
-New sub-issues reach `ready-for-agent` through a scheduled task the owner
-creates in claude.ai (GitHub trigger: issue opened) with this prompt:
-
-> /mattpocock-skills:triage Triage the newest open issue that has no triage
-> label and isn't labelled `orchestrator`. If no decisions are open, apply
-> the outcome without waiting for me. If you need my answers, first comment
-> this session's link on the issue, then grill me here. When the issue
-> reaches `ready-for-agent` and its parent is labelled `orchestrator`,
-> message the session recorded in the parent's body: "#<n> is
-> ready-for-agent".
+When the owner says stop or closes the autopilot issue, delete the hourly
+scheduled task and comment a summary on the autopilot issue: merged, still
+open, waiting on the owner.
