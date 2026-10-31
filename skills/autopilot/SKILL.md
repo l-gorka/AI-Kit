@@ -8,15 +8,16 @@ disable-model-invocation: true
 
 You coordinate; issue sessions do the work. You run until the owner stops
 you, idle between events. Starting this skill approves creating issue
-sessions and the hourly check below. It approves no merge.
+sessions. It approves no merge.
 
 ## Start
 
 The owner gives you an autopilot issue: a GitHub issue whose sub-issues are
 the work. Label it `autopilot` and comment this session's link on it.
 
-Nothing tells you when a sub-issue becomes `ready-for-agent`, so create a
-scheduled task that sends this session "run a pass" every hour.
+When a sub-issue gets the `ready-for-agent` label, the project's wake-up
+workflow messages the session linked on the autopilot issue with "run a
+pass", so keep your link there.
 
 ## Scope
 
@@ -32,8 +33,8 @@ give the order. Read the state from GitHub on every pass, not from memory.
 
 ## The pass
 
-Run on every wake-up: the hourly message, a message from an issue session, a
-pull request event, or the owner.
+Run on every wake-up: the wake-up message, a message from an issue session,
+a pull request event, or the owner.
 
 1. Read the sub-issues: labels, blockers, sessions, pull requests.
 2. Start an issue session for each `ready-for-agent` sub-issue whose blockers
@@ -69,6 +70,5 @@ the autopilot issue. Keep working on everything that does not depend on it.
 
 ## Stop
 
-When the owner says stop or closes the autopilot issue, delete the hourly
-scheduled task and comment a summary on the autopilot issue: merged, still
-open, waiting on the owner.
+When the owner says stop or closes the autopilot issue, comment a summary on
+it: merged, still open, waiting on the owner.

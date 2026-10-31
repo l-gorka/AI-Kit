@@ -66,6 +66,48 @@ These are never part of the kit:
 To deviate from the kit in one project, add a rule to its `RULES.md`; see the
 `rules` skill → "Precedence".
 
+## Waking autopilot
+
+A running `autopilot` session starts work when a sub-issue of its autopilot
+issue gets the `ready-for-agent` label. Set this up once per project:
+
+1. In claude.ai/code, create a scheduled task on the project's repository
+   with an API trigger and this prompt; copy its URL and token:
+
+   > The routine-fire-payload block names an issue that just got the
+   > `ready-for-agent` label. If its parent issue has the `autopilot` label,
+   > send the newest session linked in the parent's comments the message
+   > "run a pass: #<issue> is ready-for-agent". Do nothing else.
+
+2. Add the URL and token as the repository secrets `AUTOPILOT_WAKE_URL` and
+   `AUTOPILOT_WAKE_TOKEN`.
+3. Add a GitHub Actions workflow that posts to that URL when the label is
+   added:
+
+   ```yaml
+   name: Wake autopilot
+   on:
+     issues:
+       types: [labeled]
+   jobs:
+     wake:
+       if: github.event.label.name == 'ready-for-agent'
+       runs-on: ubuntu-latest
+       steps:
+         - run: |
+             curl -fsS -X POST "$URL" \
+               -H "Authorization: Bearer $TOKEN" \
+               -H "anthropic-version: 2023-06-01" \
+               -H "anthropic-beta: experimental-cc-routine-2026-04-01" \
+               -H "Content-Type: application/json" \
+               -d "{\"text\": \"Issue #$NUMBER in $REPO got ready-for-agent.\"}"
+           env:
+             URL: ${{ secrets.AUTOPILOT_WAKE_URL }}
+             TOKEN: ${{ secrets.AUTOPILOT_WAKE_TOKEN }}
+             NUMBER: ${{ github.event.issue.number }}
+             REPO: ${{ github.repository }}
+   ```
+
 ## Skills
 
 The kit's own skills live in `skills/` and reach a project through the
