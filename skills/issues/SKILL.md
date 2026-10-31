@@ -110,8 +110,13 @@ Where the issue stands.
 | `needs-triage` | Maintainer needs to evaluate this issue |
 | `needs-info` | Waiting on reporter for more information |
 | `ready-for-agent` | Fully specified, ready for an AFK agent |
+| `in-progress` | An issue session is implementing it (set by `autopilot`) |
 | `ready-for-human` | Requires human implementation |
 | `wontfix` | Will not be actioned |
+
+The `orchestrator` label marks the long-lived issue an `autopilot` session
+works from; its sub-issues are that session's scope. It carries no type or
+triage label.
 
 ## Tracker: GitHub
 
