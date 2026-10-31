@@ -66,13 +66,25 @@ These are never part of the kit:
 To deviate from the kit in one project, add a rule to its `RULES.md`; see the
 `rules` skill → "Precedence".
 
+## Waking autopilot
+
+A running `autopilot` session starts work when a sub-issue of its autopilot
+issue gets the `ready-for-agent` label. To wake it, create one scheduled task
+per project in claude.ai/code: the project's repository, a GitHub trigger on
+issues being labeled, the Haiku model, and this prompt:
+
+> If an issue just got the `ready-for-agent` label and its parent issue has
+> the `autopilot` label, send the newest session linked in the parent's
+> comments the message "run a pass". Otherwise do nothing.
+
 ## Skills
 
 The kit's own skills live in `skills/` and reach a project through the
 symlinks from step 4, so they update with the submodule:
 
-- `autopilot` — driving a set of issues to merged pull requests, one session
-  per issue (started by the owner).
+- `autopilot` — working through an autopilot issue's sub-issues, one
+  session per ready sub-issue, merging only with approval (started by the
+  owner).
 - `git` — branches, commits, pushes, pull requests, merges.
 - `implement` — taking an assigned issue to an open pull request.
 - `issues` — writing, labeling, and filing issues; tracker operations.
