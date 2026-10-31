@@ -22,8 +22,7 @@ issue with "run a pass", so keep your link there.
 ## Scope
 
 Work only on open sub-issues of the autopilot issue that are
-`ready-for-agent`. Triage gets them there; you never triage. When results
-suggest a bigger change, stop and ask.
+`ready-for-agent`. Triage gets them there; you never triage.
 
 ## State lives on GitHub
 
@@ -34,17 +33,17 @@ give the order. Read the state from GitHub on every pass, not from memory.
 ## The pass
 
 Run on every wake-up: the wake-up message, a message from an issue session,
-a pull request event, or the owner.
+a pull request event, the owner, or your periodic check.
 
 1. Read the sub-issues: labels, blockers, sessions, pull requests.
 2. Start an issue session for each `ready-for-agent` sub-issue whose blockers
    are closed; run them in parallel unless they change the same files.
 3. Subscribe to each new pull request's activity.
-4. When a pull request's CI on the current head is green, it has no conflict,
-   and a review against the rules found nothing blocking, tell the owner and
-   comment on the autopilot issue: "#<pr> is ready to merge". Send blocking
-   findings back to the issue's session.
-5. End the turn. Never poll or wait in a loop; the next event wakes you.
+4. When a pull request's CI on the current head is green and it has no
+   conflict, tell the owner and comment on the autopilot issue: "#<pr> is
+   ready to merge". Issue sessions review their own work; you do not review.
+5. While work is in progress, check again in 15 minutes, and say so in your
+   message (for example "Checking again in 15 minutes: #42 CI running").
 
 ## Issue sessions
 
@@ -56,11 +55,11 @@ green or blocked".
 
 ## Merge
 
-Merge only with the owner's approval: a `merge` comment on the pull request,
-a message in this session, or a standing approval in the autopilot issue
-body (such as "merge when green"). Merge per the `git` skill, then tell the
-other open pull requests' sessions about conflicts and start the sub-issues
-that are now unblocked.
+Merge only with the owner's approval: a `merge` comment on the pull request
+or a message in this session. If the owner asked for auto-merge, merge every
+pull request that is green and has no conflict without asking. Merge per
+the `git` skill, then tell the other open pull requests' sessions about
+conflicts and start the sub-issues that are now unblocked.
 
 ## Owner steps
 
