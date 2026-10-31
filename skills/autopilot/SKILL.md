@@ -15,9 +15,9 @@ sessions. It approves no merge.
 The owner gives you an autopilot issue: a GitHub issue whose sub-issues are
 the work. Label it `autopilot` and comment this session's link on it.
 
-When a sub-issue gets the `ready-for-agent` label, a scheduled task
-(kit README, "Waking autopilot") messages the session linked on the autopilot issue with "run a
-pass", so keep your link there.
+When a sub-issue gets the `ready-for-agent` label, a scheduled task (kit
+README, "Waking autopilot") messages the session linked on the autopilot
+issue with "run a pass", so keep your link there.
 
 ## Scope
 
