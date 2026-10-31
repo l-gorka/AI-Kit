@@ -44,10 +44,15 @@ subject capitalization is unrestricted.
 ## Remote changes
 
 When the work is verified and the review-agent pass is complete, push the
-branch and open a pull request without asking. Its title is the Conventional
-Commit subject of the change, and its body links the issue (`Closes #<n>`)
-and summarizes what changed and how it was verified.
+branch and open a pull request without asking. Its title becomes the commit
+on the default branch, so write it as `<type>: <issue title>` with the
+title's first letter lowercased and `<type>` taken from the issue's type
+label (`feature` is `feat`); reword it only when the work's scope changed.
+Without an issue, the title is the Conventional Commit subject of the change.
+The body links the issue (`Closes #<n>`) and summarizes what changed and how
+it was verified.
 
 Do not push or open the pull request while verification fails or review
 findings are unresolved; report the blocker to the owner instead. Merge only
-with explicit approval.
+with explicit approval, and only by squash (`merge_method: squash`), with the
+pull request title as the commit title; never create a merge commit.
