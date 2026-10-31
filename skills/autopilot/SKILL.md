@@ -21,17 +21,18 @@ that scope; when results suggest a bigger change, stop and ask.
 Start one cloud session per issue, visible to the owner, titled with the
 issue number. Its brief: the issue, the facts it needs from earlier work, and
 "follow the `implement` skill, open a pull request, keep it mergeable (rebase
-onto the default branch on conflict, per the `git` skill), fix red CI, message me when green". Run
-issues in parallel unless they change the same files; then run them one
-after another.
+onto the default branch on conflict, per the `git` skill), fix red CI,
+message me when green". Run issues in parallel unless they change the same
+files; then run them one after another.
 
 ## Merge
 
 Merge when CI on the current head is green, there is no conflict, and a
 review against the rules found nothing blocking; send blocking findings back
-to the issue's session. Merge by squash, per the `git` skill. After each merge, check the other open pull requests
-for conflicts and tell their sessions, wait for the deploy when the next step
-needs it, and start the next issue whose blockers are now closed.
+to the issue's session. Merge by squash, per the `git` skill. After each
+merge, check the other open pull requests for conflicts and tell their
+sessions, wait for the deploy when the next step needs it, and start the next
+issue whose blockers are now closed.
 
 ## Owner steps
 
