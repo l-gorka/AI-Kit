@@ -35,8 +35,9 @@ subject capitalization is unrestricted.
 
 - Make one commit per logical change, in order. Each verified stage gets its
   own commit; later work goes into a new commit.
-- Do not amend, squash, rebase, or otherwise rewrite a commit that represents
-  a finished, verified stage.
+- Do not amend, squash, or reorder a commit that represents a finished,
+  verified stage; rebasing the branch onto the default branch (below) is the
+  only allowed rewrite.
 - `--amend` is only for correcting the just-created commit before review; it
   must not fold in new work.
 - Do not rewrite history merely to produce one clean commit.
@@ -44,10 +45,27 @@ subject capitalization is unrestricted.
 ## Remote changes
 
 When the work is verified and the review-agent pass is complete, push the
-branch and open a pull request without asking. Its title is the Conventional
-Commit subject of the change, and its body links the issue (`Closes #<n>`)
-and summarizes what changed and how it was verified.
+branch and open a pull request without asking. Its title becomes the commit
+on the default branch, so write it as `<type>: <issue title>` with the
+title's first letter lowercased and `<type>` taken from the issue's type
+label (`feature` is `feat`); reword it only when the work's scope changed.
+Without an issue, the title is the Conventional Commit subject of the change.
+The body links the issue (`Closes #<n>`) and summarizes what changed and how
+it was verified.
 
 Do not push or open the pull request while verification fails or review
-findings are unresolved; report the blocker to the owner instead. Merge only
-with explicit approval.
+findings are unresolved; report the blocker to the owner instead.
+
+## Keeping the branch current
+
+Never create a merge commit: no `git merge`, no plain `git pull`, no "Update
+branch" merge button. To take in the default branch or resolve a conflict,
+run `git fetch origin` and `git rebase origin/main`, resolve each conflict,
+re-run verification, and push with `git push --force-with-lease`. Force-push
+only your own pull request branch, never the default branch.
+
+## Merging
+
+Merge only with explicit approval, and only by squash (`merge_method:
+squash`), with the pull request title as the commit title and GitHub's
+`(#<n>)` suffix. Never use the merge or rebase methods.
