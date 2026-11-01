@@ -50,11 +50,10 @@ Paths go stale; reference the glossary term or ADR instead.
 
 ### Labeling a new issue
 
-- Apply one type label on creation.
-- Apply `ready-for-agent` on creation for any ticket that is fully specified
-  and intended for an AFK agent.
-- Do not apply `needs-triage` to tickets you authored — you already triaged them
-  by writing them.
+- Apply one type label and `needs-triage` on creation, including tickets you
+  authored and tickets from a planned breakdown.
+- Never apply `ready-for-agent` or another triage label on creation; triage
+  moves the issue on.
 
 ### Sizing (planned breakdowns only)
 
