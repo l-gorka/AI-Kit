@@ -12,20 +12,18 @@ sessions. It approves no merge.
 
 ## Intake
 
-Work only on issues handed to you by message, such as "run #42", from the
-owner or a session the owner started. Where issues come from is not your
-concern: you never write or triage issues. Start an issue once it is
+Issues arrive by message, such as "run #42". Start an issue once it is
 `ready-for-agent` and its blockers are closed; until then, say why it waits.
 
 ## Issue sessions
 
-Start one cloud session per issue, visible to the owner, titled with the
-issue number; replace `ready-for-agent` with `in-progress` and comment the
-session link on the issue. Its brief: the issue, the facts it needs from
-earlier work, and "follow the `implement` skill, open a pull request, keep
-it mergeable (merge the default branch on conflict), fix red CI, message
-session <your ID> when green or blocked". Run issues in parallel unless they
-change the same files. Subscribe to each pull request's activity.
+Start one cloud session per issue, visible to the owner, titled
+"#<number> <issue title>", and replace `ready-for-agent` with `in-progress`.
+Its brief: the issue, the facts it needs from earlier work, and "follow the
+`implement` skill, open a pull request, keep it mergeable (merge the default
+branch on conflict), fix red CI, message session <your ID> when green or
+blocked". Run issues in parallel unless one must wait for another. Subscribe
+to each pull request's activity.
 
 ## Merge
 
