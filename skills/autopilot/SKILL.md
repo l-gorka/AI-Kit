@@ -25,6 +25,13 @@ branch on conflict), fix red CI, message session <your ID> when green or
 blocked". Run issues in parallel unless one must wait for another. Subscribe
 to each pull request's activity.
 
+## Learnings
+
+Also tell each issue session, in its brief: "when green, also message what
+you learned while working on this issue (surprises, mistakes, missing docs
+or rules) and what the owner could learn from it". Keep these in this
+session; do not write them anywhere.
+
 ## Merge
 
 When a pull request's CI on the current head is green and it has no
@@ -43,4 +50,5 @@ everything that does not depend on it.
 
 While work is in flight, check again every 15 minutes and say so ("Checking
 again in 15 minutes: #42 CI running"). When the owner says stop, end with a
-summary: merged, still open, waiting on the owner.
+summary: merged, still open, waiting on the owner, and all the learnings
+for the owner to review together.
