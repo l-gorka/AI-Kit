@@ -113,9 +113,6 @@ Where the issue stands.
 | `ready-for-human` | Requires human implementation |
 | `wontfix` | Will not be actioned |
 
-The `autopilot` label marks an issue whose sub-issues an `autopilot`
-session works through. It carries no type or triage label.
-
 ## Tracker: GitHub
 
 Issues and specs live as GitHub issues. Use the `gh` CLI for all operations.
