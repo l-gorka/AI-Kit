@@ -36,9 +36,10 @@ session; do not write them anywhere.
 
 When a pull request's CI on the current head is green and it has no
 conflict, tell the owner "#<pr> is ready to merge"; you do not review.
-Merge only with the owner's approval, or without asking if the owner asked
-for auto-merge. Merge per the `git` skill, then tell the other open pull
-requests' sessions about conflicts and start the issues now unblocked.
+Merge only with the owner's explicit approval, or without asking if the
+owner explicitly asked for auto-merge. Merge per the `git` skill, then tell
+the other open pull requests' sessions about conflicts and start the issues
+now unblocked.
 
 ## Owner steps
 
