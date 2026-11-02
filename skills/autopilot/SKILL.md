@@ -54,6 +54,8 @@ again in 15 minutes: #42 CI running"). When the owner says stop, end with a
 summary: merged, still open, waiting on the owner, and all the learnings
 for the owner to review together.
 
-When your context grows large, hand off to a fresh coordinator session with
+On each check, read your context size (`get_session` without an ID,
+`context_usage.used_tokens`). Above 150,000 tokens, hand off to a fresh
+coordinator session with
 a short summary: open pull requests, the queue, pending owner decisions,
 ordering constraints such as migration numbers, and the learnings so far.
