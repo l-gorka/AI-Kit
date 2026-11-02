@@ -56,6 +56,6 @@ for the owner to review together.
 
 On each check, read your context size (`get_session` without an ID,
 `context_usage.used_tokens`). Above 150,000 tokens, hand off to a fresh
-coordinator session with
-a short summary: open pull requests, the queue, pending owner decisions,
-ordering constraints such as migration numbers, and the learnings so far.
+coordinator session with a short summary: open pull requests, the queue,
+pending owner decisions, ordering constraints such as migration numbers, and
+the learnings so far.
