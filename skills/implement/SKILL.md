@@ -23,8 +23,7 @@ for taking an issue to a pull request.
 7. Hand substantive code or configuration changes to a separate review agent
    (see "Review").
 8. Address the findings, repeating verification and review as needed.
-9. Push and open the pull request per the `git` skill; leave merging to the
-   owner.
+9. Push and open the pull request per the `git` skill.
 
 ## Testing
 
