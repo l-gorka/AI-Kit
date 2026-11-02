@@ -21,9 +21,9 @@ Start one cloud session per issue, visible to the owner, titled
 "#<number> <issue title>", and replace `ready-for-agent` with `in-progress`.
 Its brief: the issue, the facts it needs from earlier work, and "follow the
 `implement` skill, open a pull request, keep it mergeable (merge the default
-branch on conflict), fix red CI, leave the merge to me, message session <your ID>
-when green or blocked". Run issues in parallel unless one must wait for
-another. Subscribe to each pull request's activity.
+branch on conflict), fix red CI, leave the merge to me, message session
+<your ID> when green or blocked". Run issues in parallel unless one must wait
+for another. Subscribe to each pull request's activity.
 
 ## Learnings
 
