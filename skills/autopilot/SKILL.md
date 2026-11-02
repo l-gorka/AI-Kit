@@ -21,16 +21,15 @@ Start one cloud session per issue, visible to the owner, titled
 "#<number> <issue title>", and replace `ready-for-agent` with `in-progress`.
 Its brief: the issue, the facts it needs from earlier work, and "follow the
 `implement` skill, open a pull request, keep it mergeable (merge the default
-branch on conflict), fix red CI, message session <your ID> when green or
-blocked". Run issues in parallel unless one must wait for another. Subscribe
-to each pull request's activity.
-
-## Learnings
-
-Also tell each issue session, in its brief: "when green, also message what
-you learned while working on this issue (surprises, mistakes, missing docs
-or rules) and what the owner could learn from it". Keep these in this
-session; do not write them anywhere.
+branch on conflict), fix red CI, and watch your pull request. Ask the owner
+directly, in your session, anything only they can answer (decisions,
+wording, setup steps such as secrets and dashboards); never route it through
+me. Message session <your ID> only short status: `#<pr> green, <owner steps
+before merge>`, `blocked: <reason>`, or the outcome of an owner answer
+(`owner chose X`). When green, add a few short lines on what you learned
+(surprises, mistakes, missing docs or rules, what the owner could learn)".
+Run issues in parallel unless one must wait for another. Do not subscribe to
+pull request activity; issue sessions watch their own.
 
 ## Merge
 
@@ -41,11 +40,12 @@ owner explicitly asked for auto-merge. Merge per the `git` skill, then tell
 the other open pull requests' sessions about conflicts and start the issues
 now unblocked.
 
-## Owner steps
+## Owner messages
 
-Collect what only the owner can do (dashboard settings, secrets, sign-ins,
-decisions) into one plain-language message with exact steps. Keep working on
-everything that does not depend on it.
+Issue sessions ask the owner directly. Message the owner only when something
+changes (a pull request is ready to merge, an issue is unblocked, something
+broke), batched into one message; never echo session messages or repeat
+unchanged status.
 
 ## Running
 
@@ -53,3 +53,9 @@ While work is in flight, check again every 15 minutes and say so ("Checking
 again in 15 minutes: #42 CI running"). When the owner says stop, end with a
 summary: merged, still open, waiting on the owner, and all the learnings
 for the owner to review together.
+
+On each check, read your context size (`get_session` without an ID,
+`context_usage.used_tokens`). Above 150,000 tokens, hand off to a fresh
+coordinator session with a short summary: open pull requests, the queue,
+pending owner decisions, ordering constraints such as migration numbers, and
+the learnings so far.
