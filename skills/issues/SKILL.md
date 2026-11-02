@@ -50,10 +50,13 @@ Paths go stale; reference the glossary term or ADR instead.
 
 ### Labeling a new issue
 
-- Apply one type label and `needs-triage` on creation, including tickets you
-  authored and tickets from a planned breakdown.
-- Never apply `ready-for-agent` or another triage label on creation; triage
-  moves the issue on.
+- Apply one type label and one triage label on creation.
+- An issue is created only once the owner has answered its open questions
+  (a planned breakdown, or an approved follow-up), so it is triaged when
+  filed: apply `ready-for-agent`, or `ready-for-human` when only a human can
+  do it. It needs no separate triage or grilling pass.
+- If a question is still open, ask it before creating. Apply `needs-info`
+  only when the owner wants the issue filed with the question open.
 
 ### Sizing (planned breakdowns only)
 
@@ -73,9 +76,9 @@ File a follow-up issue for work you discover but do not do yourself:
 - tech debt or a refactor opportunity.
 
 **Policy: propose, then create on approval.** Do not create the issue
-automatically. Summarize each proposed issue (title + type label + one-line
-"what to build" + the trigger that surfaced it) and wait for the owner to
-approve, edit, or drop it before creating it. Batch multiple proposals into
+automatically. Summarize each proposed issue (title + type and triage
+labels + one-line "what to build" + the trigger that surfaced it) and wait
+for the owner to approve, edit, or drop it before creating it. Batch multiple proposals into
 one message when several come up in a single task.
 
 ## Labels
