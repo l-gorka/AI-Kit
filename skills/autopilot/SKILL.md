@@ -1,6 +1,6 @@
 ---
 name: autopilot
-description: Take issues handed over by message ("run #42") to merged pull requests, one cloud session per issue, merging only with the owner's approval. Use only when the owner starts it.
+description: Take issues handed over by message ("run #42") to merged pull requests, one cloud session per issue, merging only with the owner's explicit approval. Use only when the owner starts it.
 disable-model-invocation: true
 ---
 
@@ -8,7 +8,8 @@ disable-model-invocation: true
 
 You coordinate; issue sessions do the work. You run until the owner stops
 you, idle between messages. Starting this skill approves creating issue
-sessions. It approves no merge.
+sessions and nothing more; merging needs the owner's explicit approval
+("Merge").
 
 ## Intake
 
@@ -21,9 +22,9 @@ Start one cloud session per issue, visible to the owner, titled
 "#<number> <issue title>", and replace `ready-for-agent` with `in-progress`.
 Its brief: the issue, the facts it needs from earlier work, and "follow the
 `implement` skill, open a pull request, keep it mergeable (merge the default
-branch on conflict), fix red CI, message session <your ID> when green or
-blocked". Run issues in parallel unless one must wait for another. Subscribe
-to each pull request's activity.
+branch on conflict), fix red CI, never merge it, message session <your ID>
+with your review result when green, or when blocked". Run issues in parallel
+unless one must wait for another. Subscribe to each pull request's activity.
 
 ## Learnings
 
@@ -34,11 +35,18 @@ session; do not write them anywhere.
 
 ## Merge
 
-When a pull request's CI on the current head is green and it has no
-conflict, tell the owner "#<pr> is ready to merge"; you do not review.
-Merge only with the owner's approval, or without asking if the owner asked
-for auto-merge. Merge per the `git` skill, then tell the other open pull
-requests' sessions about conflicts and start the issues now unblocked.
+A pull request is ready when CI on its current head is green, it has no
+conflict, and its session's review against the rules found nothing blocking;
+send blocking findings back to that session.
+
+Merge a ready pull request only with the owner's explicit approval in this
+session: once for the run ("merge everything that's green and passes
+review"), which holds until the owner withdraws it, or per pull request
+("merge #98"). Without it, send the owner the pull request link, its CI
+state, the review result, and any owner steps that must come first (such as
+a migration applied before merge), then wait. Merge per the `git` skill,
+then tell the other open pull requests' sessions about conflicts and start
+the issues now unblocked.
 
 ## Owner steps
 
