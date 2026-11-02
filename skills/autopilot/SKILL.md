@@ -24,13 +24,12 @@ Its brief: the issue, the facts it needs from earlier work, and "follow the
 branch on conflict), fix red CI, and watch your pull request. Ask the owner
 directly, in your session, anything only they can answer (decisions,
 wording, setup steps such as secrets and dashboards); never route it through
-me. Message session <your ID> only one line: `#<pr> green, <owner steps
+me. Message session <your ID> only short status: `#<pr> green, <owner steps
 before merge>`, `blocked: <reason>`, or the outcome of an owner answer
-(`owner chose X`). Put what you learned (surprises, mistakes, missing docs or
-rules, what the owner could learn) in the pull request description under
-a short `Learnings` heading". Run issues in parallel unless one must wait
-for another. Do not subscribe to pull request activity; issue sessions watch
-their own.
+(`owner chose X`). When green, add a few short lines on what you learned
+(surprises, mistakes, missing docs or rules, what the owner could learn)".
+Run issues in parallel unless one must wait for another. Do not subscribe to
+pull request activity; issue sessions watch their own.
 
 ## Merge
 
@@ -52,9 +51,9 @@ unchanged status.
 
 While work is in flight, check again every 15 minutes and say so ("Checking
 again in 15 minutes: #42 CI running"). When the owner says stop, end with a
-summary: merged, still open, waiting on the owner, and the learnings read
-from the pull requests' descriptions, for the owner to review together.
+summary: merged, still open, waiting on the owner, and all the learnings
+for the owner to review together.
 
 When your context grows large, hand off to a fresh coordinator session with
-a short summary: open pull requests, the queue, pending owner decisions, and
-ordering constraints such as migration numbers.
+a short summary: open pull requests, the queue, pending owner decisions,
+ordering constraints such as migration numbers, and the learnings so far.
