@@ -19,6 +19,7 @@ skills/                 Procedures loaded on demand (symlinked into projects)
   issues/SKILL.md
   knowledge/SKILL.md
   rules/SKILL.md
+  triage/SKILL.md
 knowledge/              Verified notes on stack and environment problems
 templates/              Skeletons for project-owned files
   CONTEXT.md
@@ -78,6 +79,7 @@ symlinks from step 4, so they update with the submodule:
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — knowledge notes in the kit and the project.
 - `rules` — adding, changing, or moving a rule.
+- `triage` — turning an idea, bug, or issue into ready issues (owner-started).
 
 Other skills (`/grill-with-docs`, `/to-tickets`, `domain-modeling`, ...) are
 not part of this kit. Install them per machine: locally in the user skills
