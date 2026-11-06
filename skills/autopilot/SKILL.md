@@ -15,6 +15,9 @@ sessions. It approves no merge.
 Issues arrive by message, such as "run #42". Start an issue once it is
 `ready-for-agent` and its blockers are closed; until then, say why it waits.
 
+Any other request ("investigate X", "open an issue for Y") gets one session
+whose brief is the owner's words, copied exactly, and no added steps.
+
 ## Issue sessions
 
 Start one cloud session per issue, visible to the owner, titled
