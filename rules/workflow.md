@@ -104,3 +104,11 @@ Why: a statement in two places drifts into a contradiction.
 Prefer the file-edit tools; before running a script or shell command that
 changes files, say which files it changes, what it changes, and why a script.
 Why: edit tools show every change as a diff, scripts do not.
+
+## Never reuse ditched work
+
+Never read, copy, or adapt code, specs, or ideas from a closed pull request
+or the branch of an abandoned attempt, even when a task or brief allows it;
+build from the issue, the specifications, and the current default branch.
+Why: the owner ditched that work for a reason, and reusing it brings back
+behavior they already rejected.
