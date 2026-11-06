@@ -9,6 +9,12 @@ every kit rule and skill, and when two statements at the same level conflict,
 ask the owner which holds before acting on either.
 Why: each project can deviate from the kit without editing the kit.
 
+## Do what the owner says, nothing more
+
+Do only the steps the owner named: "investigate" means report findings, "open
+an issue" means open the issue.
+Why: anything extra is work the owner didn't ask for.
+
 ## Load a skill before the work it covers
 
 Load the matching skill from `.claude/skills/` before its work: `git` before
