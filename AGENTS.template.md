@@ -26,3 +26,4 @@ Loaded on demand from `.claude/skills/` (symlinked from `<KIT>/skills/`):
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — knowledge notes in `<KIT>/knowledge/` and `docs/knowledge/`.
 - `rules` — adding, changing, or moving a rule.
+- `triage` — turning an idea, bug, or issue into ready issues (owner-started).
