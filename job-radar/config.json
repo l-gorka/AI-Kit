@@ -1,0 +1,24 @@
+{
+  "fx_to_pln": {"PLN": 1, "EUR": 4.25, "USD": 3.7, "GBP": 5.0, "CHF": 4.6},
+  "marketing_terms": ["marketing", "seo", "sem\\b", "ppc", "content", "social media", "brand", "growth", "performance", "copywrit", "e-?commerce", "crm", "community", "pr\\b", "public relations", "demand gen", "campaign", "kampani", "marketingow"],
+  "default_criteria": {
+    "keywords": {"seo": 3, "ppc": 3, "performance": 3, "content": 2, "growth": 3, "e-commerce": 2, "crm": 2, "social media": 1, "brand": 1},
+    "exclude": ["intern", "staż", "praktyki", "cold call"],
+    "minSalary": 10000,
+    "unknownSalary": 0.3,
+    "cities": ["Warszawa", "Kraków", "Wrocław", "Gdańsk"],
+    "remoteBonus": true,
+    "seniority": ["Mid", "Senior"],
+    "weights": {"keywords": 35, "salary": 25, "location": 20, "seniority": 10, "freshness": 10}
+  },
+  "search_links": [
+    {"name": "Pracuj.pl", "url": "https://www.pracuj.pl/praca/{q};kw"},
+    {"name": "LinkedIn (Polska)", "url": "https://www.linkedin.com/jobs/search/?keywords={q}&location=Poland&f_TPR=r604800&sortBy=DD"},
+    {"name": "Indeed PL", "url": "https://pl.indeed.com/jobs?q={q}&fromage=7"},
+    {"name": "OLX Praca", "url": "https://www.olx.pl/praca/q-{q}/"},
+    {"name": "RocketJobs", "url": "https://rocketjobs.pl/?keyword={q}"},
+    {"name": "theprotocol.it", "url": "https://theprotocol.it/filtry/{q};k"},
+    {"name": "GoldenLine", "url": "https://www.goldenline.pl/praca/?q={q}"},
+    {"name": "Google Jobs", "url": "https://www.google.com/search?q={q}+praca&ibp=htl;jobs"}
+  ]
+}
