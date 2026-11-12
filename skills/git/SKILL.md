@@ -56,3 +56,5 @@ Do not push or open the pull request while verification fails or review
 findings are unresolved; report the blocker to the owner instead. Merge only
 with explicit approval, and only by squash (`merge_method: squash`), with the
 pull request title as the commit title; never create a merge commit.
+Never merge a pull request in the kit repository without the owner's approval
+for that pull request; approval to auto-merge elsewhere does not cover it.
