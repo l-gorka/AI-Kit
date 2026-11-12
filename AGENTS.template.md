@@ -6,6 +6,8 @@ path where the kit is mounted (e.g. `.ai-kit`). Delete this comment. Keep this
 file an index: project rules go in RULES.md.
 -->
 
+If `<KIT>/` is empty, run `git submodule update --init` first.
+
 ## Read on every task
 
 - `CONTEXT.md` — repository map and verification commands.
