@@ -8,7 +8,12 @@ disable-model-invocation: true
 
 You coordinate; issue sessions do the work. You run until the owner stops
 you, idle between messages. Starting this skill approves creating issue
-sessions. It approves no merge.
+sessions. It approves no merge. While you run, every owner request follows
+this skill, whether or not it names it.
+
+If `/autopilot` does not load (for example, the kit submodule is not
+initialized), tell the owner at once and why, fix it, and read this file
+before doing anything else.
 
 ## Intake
 
@@ -63,3 +68,5 @@ so autopilot can keep running." Repeat only after compaction has happened
 and the size reaches 150,000 again. Keep the compacted context to what the
 coordinator needs: open pull requests, the queue, pending owner decisions,
 ordering constraints such as migration numbers, and the learnings so far.
+The summary must say that autopilot is running. After every compaction, read
+this file again before acting: the compacted context may not keep its rules.
