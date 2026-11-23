@@ -97,11 +97,6 @@ When a decision needs the owner, ask it as clickable options, mark one as
 recommended with its reason, and say what you will do by default.
 Why: the owner can answer in one click, and the work stays simple either way.
 
-## Keep answers short
-
-Answer briefly and never repeat status the owner has already seen.
-Why: the owner reads every message; repeats bury what changed.
-
 ## Record each decision where it belongs
 
 Write each decision the owner makes into its issue or specification in the

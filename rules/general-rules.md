@@ -94,13 +94,6 @@ re-exports the public ones, types used by one file stay inline, and types
 derived from a value use a type-only import or stay beside that value.
 Why: types are found in one place and never pull in runtime code.
 
-## Keep shared files conflict-free
-
-Use unnumbered headings instead of numbered lists in documents that grow, and
-give each feature its own small file instead of adding to a shared one.
-Why: parallel sessions conflict on numbered checklists, registries, and
-shared components.
-
 ## Write code in English, visitor text in the visitors' language
 
 Write code, docs, and commits in English, and use the visitors' language only

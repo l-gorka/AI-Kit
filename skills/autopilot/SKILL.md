@@ -48,8 +48,8 @@ start the issues now unblocked.
 
 Issue sessions ask the owner directly. Message the owner only when something
 changes (a pull request is ready to merge, an issue is unblocked, something
-broke), batched into one message; never echo session messages (see "Keep answers
-short" in `rules/workflow.md`).
+broke), batched into one message; never echo session messages or repeat
+unchanged status.
 
 ## Running
 
