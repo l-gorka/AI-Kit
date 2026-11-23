@@ -37,8 +37,8 @@ Every issue has four sections, in this order:
    `None (can start immediately)`.
 4. **Defined by** — links to every product specification, technical
    architecture document, or ADR that owns the ticket's behavior or durable
-   constraints. Link to those documents instead of copying their rules into the
-   issue. Use stable GitHub document URLs for tracker issues; the referenced
+   constraints, and for any visual change the project's design documents.
+   Link to those documents instead of copying their rules into the issue. Use stable GitHub document URLs for tracker issues; the referenced
    documents must be committed before their links can resolve.
 
 For follow-up issues filed mid-implementation, add a short **Context** line at
@@ -114,6 +114,7 @@ Where the issue stands.
 | `ready-for-agent` | Fully specified, ready for an AFK agent |
 | `in-progress` | An issue session is implementing it (set by `autopilot`) |
 | `ready-for-human` | Requires human implementation |
+| `owner-todo` | A setup step only the owner can do, with its filled-in table (with `ready-for-human`) |
 | `wontfix` | Will not be actioned |
 
 ## Tracker: GitHub

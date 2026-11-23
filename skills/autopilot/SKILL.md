@@ -25,11 +25,13 @@ branch on conflict; a conflict can stop CI from running), fix red CI, and
 watch your pull request. Green means every check, deploy builds included, ran
 on the current head and passed. Ask the owner directly, in your session,
 anything only they can answer (decisions, wording, setup steps such as secrets
-and dashboards); never route it through me. Message session <your ID> only short status: `#<pr> green, <owner steps
-before merge>`, `blocked: <reason>`, or the outcome of an owner answer
+and dashboards); never route it through me. Message session <your ID> only short status: `#<pr> green, waiting on
+owner-todo #<n>`, `blocked: <reason>`, or the outcome of an owner answer
 (`owner chose X`). When green, add a few short lines on what you learned
 (surprises, mistakes, missing docs or rules, what the owner could learn)".
-Run issues in parallel unless one must wait for another. Do not subscribe to
+Run issues in parallel unless one must wait for another or they touch the
+same shared file; then group them into one session or run them one after
+another. Do not subscribe to
 pull request activity; issue sessions watch their own.
 
 ## Merge
@@ -46,8 +48,8 @@ start the issues now unblocked.
 
 Issue sessions ask the owner directly. Message the owner only when something
 changes (a pull request is ready to merge, an issue is unblocked, something
-broke), batched into one message; never echo session messages or repeat
-unchanged status.
+broke), batched into one message; never echo session messages (see "Keep answers
+short" in `rules/workflow.md`).
 
 ## Running
 

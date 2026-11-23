@@ -25,6 +25,31 @@ Before changing code, read `CONTEXT.md`, `GLOSSARY.md`, the rules, and the
 specifications, ADRs, and design documents for the area you touch.
 Why: the change then fits the existing system and vocabulary.
 
+## Know what each service allows before planning
+
+Before planning work that touches an external service, find out what the
+session's credentials can and cannot do there, record it in the services
+table in `CONTEXT.md`, and list every step only the owner can do in the
+specification.
+Why: a missing permission found mid-task costs a session; found in the spec,
+it costs one line.
+
+## Give the owner each setup step once, in the to-do list
+
+File every step only the owner can do as one `ready-for-human` issue labeled
+`owner-todo`, with a filled-in table (what, exact value, where to click), and
+link that issue instead of repeating the steps in messages or docs; the open
+`owner-todo` issues are the owner's to-do list.
+Why: one current list beats steps scattered across messages and docs.
+
+## Build every UI change from the design system
+
+For every UI change, read the project's design documents (path in
+`CONTEXT.md`), use only their tokens, and check the result with screenshots
+against them before handing off.
+Why: without the design system in view, fonts, links, and menus come out
+ad hoc.
+
 ## Keep the diff scoped
 
 Make the smallest coherent change that does the task, and propose adjacent
@@ -68,10 +93,21 @@ be tuned once real use shows it matters.
 
 ## Ask questions with a recommended answer
 
-When a decision needs the owner, ask a specific question with a few options,
-mark one as recommended with its reason, and say what you will do by
-default.
-Why: the owner can answer in one word, and the work stays simple either way.
+When a decision needs the owner, ask it as clickable options, mark one as
+recommended with its reason, and say what you will do by default.
+Why: the owner can answer in one click, and the work stays simple either way.
+
+## Keep answers short
+
+Answer briefly and never repeat status the owner has already seen.
+Why: the owner reads every message; repeats bury what changed.
+
+## Record each decision where it belongs
+
+Write each decision the owner makes into its issue or specification in the
+same session, and propose rules, ADR, or glossary text per "Ask before
+editing agent documents".
+Why: a decision left in a chat is lost when the session ends.
 
 ## Use the glossary's terms
 
