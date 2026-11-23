@@ -19,6 +19,17 @@ The repository contains:
 - `docs/adr/` — durable architectural trade-offs and their rationale.
 - `docs/knowledge/` — verified, reusable solutions to recurring problems.
 
+Design documents (tokens, components, screenshots to compare against):
+`<path>`.
+
+## Services
+
+What the agent's credentials can and cannot do in each external service.
+
+| Service | Agent can | Agent can't (owner does it) |
+| --- | --- | --- |
+| `<service>` | <actions> | <actions> |
+
 ## Verification commands
 
 The agent workflow reads this section for the baseline checks to run before

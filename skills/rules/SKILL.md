@@ -45,8 +45,9 @@ deviations as findings.
 
 ## Adding or changing a rule
 
-When the owner states a decision that should outlive the current task, draft
-the rule and propose it. Write it only after the owner approves the wording.
+Draft a rule only from what the owner actually said, in their words; a
+single remark or correction is not a rule, so ask "make this a rule?" before
+drafting one, then propose it. Write it only after the owner approves the wording.
 Never add, edit, or delete a rule without approval.
 
 ## Project rule or general rule
