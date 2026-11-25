@@ -27,8 +27,9 @@ Start one cloud session per issue, visible to the owner, titled
 Its brief: the issue, the facts it needs from earlier work, and "follow the
 `implement` skill, open a pull request, keep it mergeable (merge the default
 branch on conflict; a conflict can stop CI from running), fix red CI, and
-watch your pull request. Green means every check, deploy builds included, ran
-on the current head and passed. Ask the owner directly, in your session,
+watch your pull request. Green means every check ran on the current head and
+passed (deploy builds required: <yes or no, per the owner>), and the pull
+request passed review and is marked ready. Ask the owner directly, in your session,
 anything only they can answer (decisions, wording, setup steps such as secrets
 and dashboards); never route it through me. Message session <your ID> only short status: `#<pr> green, waiting on
 owner-todo #<n>`, `blocked: <reason>`, or the outcome of an owner answer
@@ -41,12 +42,15 @@ pull request activity; issue sessions watch their own.
 
 ## Merge
 
-When every check on a pull request's current head, deploy builds included,
-has run and passed and it has no conflict, tell the owner "#<pr> is ready to
-merge"; you do not review. Merge only with the owner's explicit approval, or
-without asking if the owner explicitly asked for auto-merge. Merge per the
-`git` skill and confirm the merge's deploy build started (tell the owner if
-not). Then tell the other open pull requests' sessions about conflicts and
+Deploy builds (such as Cloudflare Pages) are required only when the owner
+says so for this run; otherwise they are optional and their result does not
+block a merge. When every required check on a pull request's current head has
+run and passed, it has no conflict, and it passed review and is marked ready
+(the `implement` skill), tell the owner "#<pr> is ready to merge"; you do not
+review. Merge only with the owner's explicit approval, or without asking if
+the owner explicitly asked for auto-merge. Merge per the `git` skill and, when
+deploy builds are required, confirm the merge's deploy build started (tell
+the owner if not). Then tell the other open pull requests' sessions about conflicts and
 start the issues now unblocked.
 
 ## Owner messages

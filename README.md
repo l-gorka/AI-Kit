@@ -75,7 +75,8 @@ symlinks from step 4, so they update with the submodule:
 - `autopilot` — taking issues handed over by message to merged pull
   requests, one session per issue (started by the owner).
 - `git` — branches, commits, pushes, pull requests, merges.
-- `implement` — taking an assigned issue to an open pull request.
+- `implement` — taking an assigned issue to a reviewed pull request (spec
+  review, then quality review, posted on GitHub).
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — knowledge notes in the kit and the project.
 - `rules` — adding, changing, or moving a rule.
