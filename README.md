@@ -12,6 +12,9 @@ rules/                  Rules read on every task (indexed by AGENTS.md)
   general-rules.md
   unit-testing.md
   vertical-slices.md
+agents/                 Subagents the skills hand work to (symlinked into projects)
+  quality-reviewer.md
+  spec-reviewer.md
 skills/                 Procedures loaded on demand (symlinked into projects)
   autopilot/SKILL.md
   git/SKILL.md
@@ -55,12 +58,15 @@ These are never part of the kit:
    `CONTEXT.md`; replace `<KIT>` in `RULES.md`). `GLOSSARY.md` and
    `docs/adr/` are created by the `domain-modeling` skill when the first term
    or decision is resolved.
-4. Link the kit's skills into the project and commit the links:
+4. Link the kit's skills and agents into the project and commit the links:
 
    ```sh
-   mkdir -p .claude/skills
+   mkdir -p .claude/skills .claude/agents
    for s in .ai-kit/skills/*/; do
      ln -s "../../${s%/}" ".claude/skills/$(basename "$s")"
+   done
+   for a in .ai-kit/agents/*.md; do
+     ln -s "../../$a" ".claude/agents/$(basename "$a")"
    done
    ```
 
@@ -75,11 +81,22 @@ symlinks from step 4, so they update with the submodule:
 - `autopilot` — taking issues handed over by message to merged pull
   requests, one session per issue (started by the owner).
 - `git` — branches, commits, pushes, pull requests, merges.
-- `implement` — taking an assigned issue to an open pull request.
+- `implement` — taking an assigned issue to a reviewed pull request (spec
+  review, then quality review, posted on GitHub).
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — knowledge notes in the kit and the project.
 - `rules` — adding, changing, or moving a rule.
 - `triage` — turning an idea, bug, or issue into ready issues (owner-started).
+
+## Agents
+
+The kit's subagents live in `agents/` and reach a project through the
+symlinks from step 4; `implement` hands work to them:
+
+- `spec-reviewer` — reviews a pull request against its issue and
+  specifications and posts the review on GitHub.
+- `quality-reviewer` — reviews a pull request's code against the rules and
+  posts the review on GitHub.
 
 Other skills (`/grill-with-docs`, `/to-tickets`, `domain-modeling`, ...) are
 not part of this kit. Install them per machine: locally in the user skills

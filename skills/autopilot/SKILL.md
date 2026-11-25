@@ -27,8 +27,9 @@ Start one cloud session per issue, visible to the owner, titled
 Its brief: the issue, the facts it needs from earlier work, and "follow the
 `implement` skill, open a pull request, keep it mergeable (merge the default
 branch on conflict; a conflict can stop CI from running), fix red CI, and
-watch your pull request. Green means every check, deploy builds included, ran
-on the current head and passed. Ask the owner directly, in your session,
+watch your pull request. Green means every check, deploy builds included
+unless the owner says otherwise, ran on the current head and passed, and both
+reviews passed. Ask the owner directly, in your session,
 anything only they can answer (decisions, wording, setup steps such as secrets
 and dashboards); never route it through me. Message session <your ID> only short status: `#<pr> green, waiting on
 owner-todo #<n>`, `blocked: <reason>`, or the outcome of an owner answer

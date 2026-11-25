@@ -24,8 +24,13 @@ Loaded on demand from `.claude/skills/` (symlinked from `<KIT>/skills/`):
 
 - `autopilot` — driving a set of issues to merged pull requests (owner-started).
 - `git` — branches, commits, pushes, pull requests, merges.
-- `implement` — taking an assigned issue to an open pull request.
+- `implement` — taking an assigned issue to a reviewed pull request.
 - `issues` — writing, labeling, and filing issues; tracker operations.
 - `knowledge` — knowledge notes in `<KIT>/knowledge/` and `docs/knowledge/`.
 - `rules` — adding, changing, or moving a rule.
 - `triage` — turning an idea, bug, or issue into ready issues (owner-started).
+
+## Agents
+
+Subagents in `.claude/agents/` (symlinked from `<KIT>/agents/`):
+`spec-reviewer` and `quality-reviewer`, called by `implement`.

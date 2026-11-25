@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Take an assigned issue to an open pull request: check the issue, branch, implement, test, review, and hand off. Use when the owner assigns an issue or asks to implement one.
+description: Take an assigned issue to a reviewed pull request: check the issue, branch, implement, test, open a pull request, and get it through the spec and quality reviews. Use when the owner assigns an issue or asks to implement one.
 ---
 
 # Implement an issue
@@ -17,13 +17,10 @@ for taking an issue to a pull request.
    you on one.
 3. Implement the smallest coherent change that satisfies the issue.
 4. Test by risk (see "Testing") and run the verification commands.
-5. Review your own diff for scope, acceptance criteria, error handling, and
-   documentation impact.
-6. Commit per the `git` skill.
-7. Hand substantive code or configuration changes to a separate review agent
-   (see "Review").
-8. Address the findings, repeating verification and review as needed.
-9. Push and open the pull request per the `git` skill.
+5. Commit per the `git` skill.
+6. Push and open the pull request per the `git` skill.
+7. Run the spec review, then the quality review, until both pass (see
+   "Review").
 
 ## Testing
 
@@ -37,16 +34,22 @@ Where tests go: the kit's `rules/unit-testing.md`.
 
 ## Review
 
-The review agent inspects the diff, the acceptance criteria, the scope, and
-the verification evidence you supply; it does not rerun lint, build, or test
-commands. It checks the diff against the kit's rules and the project's rules
-file and reports unexplained deviations. State any deliberate deviation, with
-its reason, in the handoff.
+Hand the pull request to the `spec-reviewer` agent, and once it passes, to
+the `quality-reviewer` agent. Give each the repository, the pull request
+number, and the verification evidence; give the spec reviewer the issue
+number, and the quality reviewer every deliberate
+deviation from the rules with its reason. Each posts its review on the pull
+request and returns a verdict.
 
-Scope the review to the repository's own source. Do not read installed,
-vendored, or generated third-party code (`node_modules`, lockfiles, bundled
-output). If a dependency's behavior is load-bearing and unverified, report
-that as a finding instead of reading its internals.
+For every inline comment, fix it or reply with your reason, reply in its
+thread with the commit that fixes it, and resolve the thread. Apply or answer
+nits without another round. After fixing `blocking` findings, rerun
+verification, push, and run the same reviewer again. After two rounds of one
+reviewer that still end in `changes needed`, stop and ask the owner, listing
+the open findings.
+
+The pull request passes review when the latest spec review and quality review
+both end in `Verdict: pass` and every review thread is resolved.
 
 ## Documentation
 
@@ -59,5 +62,5 @@ facts in `CONTEXT.md`.
 
 The work is done when the acceptance criteria are met, the relevant checks
 pass, the diff is scoped, durable documentation is updated (proposed per
-`rules/workflow.md`), the review findings are resolved or accepted by the
-owner, and the pull request is open.
+`rules/workflow.md`), the pull request is open, and it passes review or the
+owner accepted the open findings.
