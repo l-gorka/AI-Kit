@@ -54,9 +54,8 @@ Without an issue, the title is the Conventional Commit subject of the change.
 The body links the issue (`Closes #<n>`) and summarizes what changed and how
 it was verified.
 
-Do not push or open the pull request while verification fails, and keep it a
-draft while review findings are unresolved; report the blocker to the owner
-instead. Merge only
+Do not push or open the pull request while verification fails; report the
+blocker to the owner instead. Merge only
 with explicit approval, and only by squash (`merge_method: squash`), with the
 pull request title as the commit title; never create a merge commit.
 Never merge a pull request in the kit repository without the owner's approval

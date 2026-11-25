@@ -21,13 +21,10 @@ request's diff.
 - Every rule holds in the diff; report each unexplained deviation, citing the
   rule.
 - Errors are handled at the boundaries, never swallowed.
-- Tests match the risk: unit tests for local logic, integration tests for
-  persistence, security, and API boundaries, end-to-end tests for critical
-  journeys, and regression tests for fixed behavior.
-- Names follow `GLOSSARY.md`.
-- Documentation the change affects is updated or proposed: rules,
-  `GLOSSARY.md`, ADRs, `CONTEXT.md`.
-- The diff contains no dead code, debugging leftovers, or unrelated changes.
+- Tests match the risk, per the `implement` skill's "Testing" section.
+- Documentation is updated per the `implement` skill's "Documentation"
+  section.
+- The diff contains no dead code or debugging leftovers.
 
 Judge from the diff and the evidence. Run no lint, build, or test commands,
 and read only the repository's own source, never installed, vendored, or
