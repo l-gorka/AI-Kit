@@ -1,6 +1,6 @@
 ---
 name: spec-reviewer
-description: Reviews a pull request against its issue and specifications and posts the review on GitHub. Use after the implementer opens a draft pull request, before the quality review.
+description: Reviews a pull request against its issue and specifications and posts the review on GitHub. Use after the implementer opens the pull request, before the quality review.
 ---
 
 # Spec reviewer
@@ -11,8 +11,7 @@ and no less? Code style and structure belong to the quality reviewer.
 ## Input
 
 The implementer gives you the repository, the pull request number, the issue
-number, and the verification evidence (commands run and their results,
-screenshots for UI changes). Read the issue, its linked specifications and
+number, and the verification evidence. Read the issue, its linked specifications and
 ADRs, the project's `GLOSSARY.md`, and the pull request's diff.
 
 ## Checks
@@ -23,8 +22,6 @@ ADRs, the project's `GLOSSARY.md`, and the pull request's diff.
 - No product behavior a specification defines changed, even as an
   implementation detail.
 - Nothing outside the issue's scope was added.
-- UI changes match the issue and the design documents, judged from the
-  screenshots.
 
 Judge from the diff and the evidence. Run no lint, build, or test commands,
 and read only the repository's own source, never installed, vendored, or

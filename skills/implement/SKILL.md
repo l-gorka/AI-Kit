@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Take an assigned issue to a reviewed pull request: check the issue, branch, implement, test, open a draft pull request, run the spec and quality reviews, and hand off. Use when the owner assigns an issue or asks to implement one.
+description: Take an assigned issue to a reviewed pull request: check the issue, branch, implement, test, open a pull request, and get it through the spec and quality reviews. Use when the owner assigns an issue or asks to implement one.
 ---
 
 # Implement an issue
@@ -18,11 +18,9 @@ for taking an issue to a pull request.
 3. Implement the smallest coherent change that satisfies the issue.
 4. Test by risk (see "Testing") and run the verification commands.
 5. Commit per the `git` skill.
-6. Push and open the pull request as a draft per the `git` skill. When the
-   change alters what a user sees, add screenshots (see "Screenshots").
+6. Push and open the pull request per the `git` skill.
 7. Run the spec review, then the quality review, until both pass (see
    "Review").
-8. Mark the pull request ready for review.
 
 ## Testing
 
@@ -34,21 +32,12 @@ Where tests go: the kit's `rules/unit-testing.md`.
   boundaries.
 - Preserve existing tests and add regression coverage for fixed behavior.
 
-## Screenshots
-
-Take a screenshot of every screen the change alters, at desktop and phone
-width, and an "after" next to a "before" when an existing screen changes.
-Commit them to the `pr-assets` branch under `pr-<number>/` (create the branch
-as an orphan if it does not exist; pull before pushing, since other sessions
-push there too) and embed each in the pull request body as
-`![<screen>](https://github.com/<owner>/<repo>/blob/pr-assets/pr-<number>/<file>.png?raw=true)`.
-
 ## Review
 
 Hand the pull request to the `spec-reviewer` agent, and once it passes, to
 the `quality-reviewer` agent. Give each the repository, the pull request
 number, and the verification evidence; give the spec reviewer the issue
-number and the screenshots, and the quality reviewer every deliberate
+number, and the quality reviewer every deliberate
 deviation from the rules with its reason. Each posts its review on the pull
 request and returns a verdict.
 
@@ -73,5 +62,5 @@ facts in `CONTEXT.md`.
 
 The work is done when the acceptance criteria are met, the relevant checks
 pass, the diff is scoped, durable documentation is updated (proposed per
-`rules/workflow.md`), the pull request passes review or the owner accepted
-the open findings, and the pull request is marked ready for review.
+`rules/workflow.md`), the pull request is open, and it passes review or the
+owner accepted the open findings.
