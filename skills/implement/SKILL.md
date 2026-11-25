@@ -17,14 +17,12 @@ for taking an issue to a pull request.
    you on one.
 3. Implement the smallest coherent change that satisfies the issue.
 4. Test by risk (see "Testing") and run the verification commands.
-5. Review your own diff for scope, acceptance criteria, error handling, and
-   documentation impact.
-6. Commit per the `git` skill.
-7. Push and open the pull request as a draft per the `git` skill. When the
+5. Commit per the `git` skill.
+6. Push and open the pull request as a draft per the `git` skill. When the
    change alters what a user sees, add screenshots (see "Screenshots").
-8. Run the spec review, then the quality review, until both pass (see
+7. Run the spec review, then the quality review, until both pass (see
    "Review").
-9. Mark the pull request ready for review.
+8. Mark the pull request ready for review.
 
 ## Testing
 
